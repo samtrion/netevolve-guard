@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>
+    <EnablePreviewFeatures>false</EnablePreviewFeatures>
+  </PropertyGroup>
+
+  <Import Project="..\NetEvolve.Guard.Shared\NetEvolve.Guard.Shared.projitems" Label="Shared" />
+
+</Project>

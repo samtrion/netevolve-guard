@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0ad5ee37-0177-4dad-8a5b-4f7ffe5dd6e0</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>NetEvolve.Guard.Tests</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\NetEvolve.Guard.SharedTests\EnsureTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresCharTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresDateOnlyTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresDateTimeOffsetTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresDateTimeTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresDecimalTests.cs" />
+    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresObjectTests.cs" />
+    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresGuidTests.cs" />
+    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresStringTests.cs" />
+    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresStructTests.cs" />
+    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresUriTests.cs" />
+    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresStreamTests.cs" />
+    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresIEnumerableTests.cs" />
+    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresFileInfoTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresDirectoryInfoTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresDoubleTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresHalfTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresInt16Tests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresInt32Tests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresInt64Tests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresInt8Tests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresSingleTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresTimeOnlyTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresTimeSpanTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresUInt16Tests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresUInt32Tests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresUInt64Tests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresUInt8Tests.cs" />
+  </ItemGroup>
+</Project>
