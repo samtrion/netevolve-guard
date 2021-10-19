@@ -44,7 +44,7 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         directory: ./results/
-        files: ./coverage.json
+        files: ./coverage.net5.0.json,./coverage.net6.0.json
         fail_ci_if_error: true
         flags: unittests
         verbose: true
