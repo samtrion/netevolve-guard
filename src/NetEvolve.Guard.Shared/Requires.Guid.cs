@@ -22,7 +22,7 @@ public static partial class Requires
       throw new ArgumentNullException(parameterName);
     }
 
-    if (value == Guid.Empty)
+    if (value.Value == Guid.Empty)
     {
       throw new ArgumentException(null, parameterName);
     }

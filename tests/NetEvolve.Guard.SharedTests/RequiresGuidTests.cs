@@ -8,12 +8,28 @@ using Xunit;
 public class RequiresGuidTests
 {
   [Theory]
-  [InlineData(true, false, null)]
-  [InlineData(false, true, "")]
-  [InlineData(false, false, " ")]
-  [InlineData(false, false, "Hello World!")]
-  public void NotNullOrEmpty_Theory_Expected(bool throwExceptionNull, bool throwException, string? value)
+  [InlineData(true, "00000000-0000-0000-0000-000000000000")]
+  [InlineData(false, "00000000-0000-0000-0000-000000000001")]
+  public void NotEmpty_Theory_Expected(bool throwException, string valueString)
   {
+    var value = Guid.Parse(valueString);
+    if (throwException)
+    {
+      _ = Assert.Throws<ArgumentException>(nameof(value), () => Requires.NotEmpty(nameof(value), value));
+    }
+    else
+    {
+      Requires.NotEmpty(nameof(value), value);
+    }
+  }
+
+  [Theory]
+  [InlineData(true, false, null)]
+  [InlineData(false, true, "00000000-0000-0000-0000-000000000000")]
+  [InlineData(false, false, "00000000-0000-0000-0000-000000000001")]
+  public void NotNullOrEmpty_Theory_Expected(bool throwExceptionNull, bool throwException, string? valueString)
+  {
+    Guid? value = valueString is not null ? Guid.Parse(valueString) : null;
     if (throwExceptionNull)
     {
       _ = Assert.Throws<ArgumentNullException>(nameof(value), () => Requires.NotNullOrEmpty(nameof(value), value));
@@ -24,28 +40,7 @@ public class RequiresGuidTests
     }
     else
     {
-      _ = Requires.NotNullOrEmpty(nameof(value), value);
-    }
-  }
-
-  [Theory]
-  [InlineData(true, false, null)]
-  [InlineData(false, true, "")]
-  [InlineData(false, true, " ")]
-  [InlineData(false, false, "Hello World!")]
-  public void NotNullOrWhiteSpace_Theory_Expected(bool throwExceptionNull, bool throwException, string? value)
-  {
-    if (throwExceptionNull)
-    {
-      _ = Assert.Throws<ArgumentNullException>(nameof(value), () => Requires.NotNullOrWhiteSpace(nameof(value), value));
-    }
-    else if (throwException)
-    {
-      _ = Assert.Throws<ArgumentException>(nameof(value), () => Requires.NotNullOrWhiteSpace(nameof(value), value));
-    }
-    else
-    {
-      _ = Requires.NotNullOrWhiteSpace(nameof(value), value);
+      Requires.NotNullOrEmpty(nameof(value), value);
     }
   }
 }
