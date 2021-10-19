@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31808.319
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FAC6D7F5-DA52-45B9-8F31-3E411E72B57A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{08006D4C-D990-46D3-B45C-67C00FBDB1CA}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{40FBFBBF-2DA5-4A3F-8D62-06E0DAF7B046}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Directory.Build.props = tests\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetEvolve.Guard", "src\NetEvolve.Guard\NetEvolve.Guard.csproj", "{E9CDF040-94AD-4B58-B0CC-24A4418862F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetEvolve.Guard.Tests", "tests\NetEvolve.Guard.Tests\NetEvolve.Guard.Tests.csproj", "{9A132042-7D4F-4E4B-8404-4810B67D9CCD}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NetEvolve.Guard.Shared", "src\NetEvolve.Guard.Shared\NetEvolve.Guard.Shared.shproj", "{A883635D-7BE2-431E-BEAA-868D48B09E6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetEvolve.Guard.Experimental", "src\NetEvolve.Guard.Experimental\NetEvolve.Guard.Experimental.csproj", "{1C248855-EFB8-4138-838A-317642E40916}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetEvolve.Guard.Experimental.Tests", "tests\NetEvolve.Guard.Experimental.Tests\NetEvolve.Guard.Experimental.Tests.csproj", "{F70673A9-2649-475F-A3BB-4EE264472F81}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NetEvolve.Guard.SharedTests", "tests\NetEvolve.Guard.SharedTests\NetEvolve.Guard.SharedTests.shproj", "{0AD5EE37-0177-4DAD-8A5B-4F7FFE5DD6E0}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		tests\NetEvolve.Guard.SharedTests\NetEvolve.Guard.SharedTests.projitems*{0ad5ee37-0177-4dad-8a5b-4f7ffe5dd6e0}*SharedItemsImports = 13
+		src\NetEvolve.Guard.Shared\NetEvolve.Guard.Shared.projitems*{1c248855-efb8-4138-838a-317642e40916}*SharedItemsImports = 5
+		tests\NetEvolve.Guard.SharedTests\NetEvolve.Guard.SharedTests.projitems*{9a132042-7d4f-4e4b-8404-4810b67d9ccd}*SharedItemsImports = 5
+		src\NetEvolve.Guard.Shared\NetEvolve.Guard.Shared.projitems*{a883635d-7be2-431e-beaa-868d48b09e6d}*SharedItemsImports = 13
+		src\NetEvolve.Guard.Shared\NetEvolve.Guard.Shared.projitems*{e9cdf040-94ad-4b58-b0cc-24a4418862f3}*SharedItemsImports = 5
+		tests\NetEvolve.Guard.SharedTests\NetEvolve.Guard.SharedTests.projitems*{f70673a9-2649-475f-a3bb-4ee264472f81}*SharedItemsImports = 5
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9CDF040-94AD-4B58-B0CC-24A4418862F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9CDF040-94AD-4B58-B0CC-24A4418862F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9CDF040-94AD-4B58-B0CC-24A4418862F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9CDF040-94AD-4B58-B0CC-24A4418862F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A132042-7D4F-4E4B-8404-4810B67D9CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A132042-7D4F-4E4B-8404-4810B67D9CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A132042-7D4F-4E4B-8404-4810B67D9CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A132042-7D4F-4E4B-8404-4810B67D9CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C248855-EFB8-4138-838A-317642E40916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C248855-EFB8-4138-838A-317642E40916}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C248855-EFB8-4138-838A-317642E40916}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C248855-EFB8-4138-838A-317642E40916}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F70673A9-2649-475F-A3BB-4EE264472F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F70673A9-2649-475F-A3BB-4EE264472F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F70673A9-2649-475F-A3BB-4EE264472F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F70673A9-2649-475F-A3BB-4EE264472F81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E9CDF040-94AD-4B58-B0CC-24A4418862F3} = {08006D4C-D990-46D3-B45C-67C00FBDB1CA}
+		{9A132042-7D4F-4E4B-8404-4810B67D9CCD} = {40FBFBBF-2DA5-4A3F-8D62-06E0DAF7B046}
+		{A883635D-7BE2-431E-BEAA-868D48B09E6D} = {08006D4C-D990-46D3-B45C-67C00FBDB1CA}
+		{1C248855-EFB8-4138-838A-317642E40916} = {08006D4C-D990-46D3-B45C-67C00FBDB1CA}
+		{F70673A9-2649-475F-A3BB-4EE264472F81} = {40FBFBBF-2DA5-4A3F-8D62-06E0DAF7B046}
+		{0AD5EE37-0177-4DAD-8A5B-4F7FFE5DD6E0} = {40FBFBBF-2DA5-4A3F-8D62-06E0DAF7B046}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {000A024F-1DE8-4B8C-8FC5-3BD43589D374}
+	EndGlobalSection
+EndGlobal

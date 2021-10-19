@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a883635d-7be2-431e-beaa-868d48b09e6d</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>NetEvolve.Guard</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Ensure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interops\Nullable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Half.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Single.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Double.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Char.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Decimal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.TimeSpan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.TimeOnly.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.DateOnly.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.DateTimeOffset.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.DateTime.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.UInt8.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.UInt16.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.UInt64.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.UInt32.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Int8.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Int16.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Int64.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Int32.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.DirectoryInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.FileInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Guid.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.IComparisonOperators.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.IEnumerable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.IFloatingPoint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Object.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Stream.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.String.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Struct.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.Uri.cs" />
+  </ItemGroup>
+</Project>

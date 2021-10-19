@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
+    <GenerateRequiresPreviewFeaturesAttribute>false</GenerateRequiresPreviewFeaturesAttribute>
+
+    <DefineConstants>USE_GENERIC_MATH_FEATURE;$(DefineConstants)</DefineConstants>
+
+    <RootNamespace>NetEvolve.Guard</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Runtime.Experimental" Version="6.0.0-preview.7.21377.19" />
+  </ItemGroup>
+
+  <Import Project="..\NetEvolve.Guard.Shared\NetEvolve.Guard.Shared.projitems" Label="Shared" />
+
+</Project>
