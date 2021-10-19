@@ -13,33 +13,34 @@ on:
 
 jobs:
   build:
-
+    name: Run
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
-    - name: Setup dotnet
+    - name: Setup .NET 5.x
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.x'
 
-    - name: Setup dotnet
+    - name: Setup .NET 6.x
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.x'
         include-prerelease: true
 
-    - name: Restore dependencies
+    - name: Restore NuGet Dependencies
       run: dotnet restore
 
-    - name: Build
+    - name: Build Solution
       run: dotnet build --configuration Release --no-restore
 
-    - name: Test
+    - name: Test Solution
       run: dotnet test --configuration Release --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/coverage.json\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json,$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
 
-    - name: Upload coverage to Codecov
+    - name: Upload Coverage Reports to Codecov
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
