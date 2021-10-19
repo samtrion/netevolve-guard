@@ -38,7 +38,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Test Solution
-      run: dotnet test --configuration Release --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/coverage.json\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json,$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
+      run: dotnet test --configuration Release --no-build --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/coverage.json\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json,$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
 
     - name: Upload Coverage Reports to Codecov
       uses: codecov/codecov-action@v2
@@ -48,4 +48,3 @@ jobs:
         files: ./results/coverage.net5.0.json,./results/coverage.net6.0.json
         fail_ci_if_error: true
         flags: unittests
-        verbose: true
