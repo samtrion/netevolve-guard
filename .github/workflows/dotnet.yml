@@ -1,0 +1,50 @@
+name: Build and Release
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Run
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup .NET 5.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.x'
+
+    - name: Setup .NET 6.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.x'
+        include-prerelease: true
+
+    - name: Restore NuGet Dependencies
+      run: dotnet restore
+
+    - name: Build Solution
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test Solution
+      run: dotnet test --configuration Release --no-build --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/coverage.json\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json,$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
+
+    - name: Upload Coverage Reports to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        directory: $GITHUB_WORKSPACE
+        files: ./results/coverage.net5.0.json,./results/coverage.net6.0.json
+        fail_ci_if_error: true
+        flags: unittests
