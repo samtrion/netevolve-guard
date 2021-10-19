@@ -37,14 +37,13 @@ jobs:
       run: dotnet build --no-restore
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=\"./results/coverage.json\" /p:MergeWith=\"./results/coverage.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
+      run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=\"./results/coverage.json\" /p:MergeWith=\"./results/coverage.net5.0.json,./results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        directory: ./results/
-        files: ./coverage.net5.0.json,./coverage.net6.0.json
+        files: ./results/coverage.net5.0.json,./results/coverage.net6.0.json
         fail_ci_if_error: true
         flags: unittests
         verbose: true
