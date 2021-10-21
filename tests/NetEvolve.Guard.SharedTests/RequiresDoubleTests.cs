@@ -22,11 +22,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.InBetween(nameof(value), value, min, max));
+        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.InBetween( value, min, max));
       }
       else
       {
-        Requires.InBetween(nameof(value), value, min, max);
+        Requires.InBetween( value, min, max);
       }
     }
 
@@ -36,11 +36,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.GreaterThan(nameof(value), value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.GreaterThan( value, compareValue));
       }
       else
       {
-        Requires.GreaterThan(nameof(value), value, compareValue);
+        Requires.GreaterThan( value, compareValue);
       }
     }
 
@@ -50,11 +50,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.GreaterThanOrEqual(nameof(value), value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.GreaterThanOrEqual( value, compareValue));
       }
       else
       {
-        Requires.GreaterThanOrEqual(nameof(value), value, compareValue);
+        Requires.GreaterThanOrEqual( value, compareValue);
       }
     }
 
@@ -64,11 +64,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.LessThan(nameof(value), value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.LessThan( value, compareValue));
       }
       else
       {
-        Requires.LessThan(nameof(value), value, compareValue);
+        Requires.LessThan( value, compareValue);
       }
     }
 
@@ -78,11 +78,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.LessThanOrEqual(nameof(value), value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.LessThanOrEqual( value, compareValue));
       }
       else
       {
-        Requires.LessThanOrEqual(nameof(value), value, compareValue);
+        Requires.LessThanOrEqual( value, compareValue);
       }
     }
 
@@ -92,11 +92,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentException>(nameof(value), () => Requires.NotNaN(nameof(value), value));
+        _ = Assert.Throws<ArgumentException>( () => Requires.NotNaN( value));
       }
       else
       {
-        Requires.NotNaN(nameof(value), value);
+        Requires.NotNaN( value);
       }
     }
 
@@ -106,11 +106,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentException>(nameof(value), () => Requires.NotInfinity(nameof(value), value));
+        _ = Assert.Throws<ArgumentException>( () => Requires.NotInfinity( value));
       }
       else
       {
-        Requires.NotInfinity(nameof(value), value);
+        Requires.NotInfinity( value);
       }
     }
 
@@ -120,11 +120,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentException>(nameof(value), () => Requires.NotNegativeInfinity(nameof(value), value));
+        _ = Assert.Throws<ArgumentException>( () => Requires.NotNegativeInfinity( value));
       }
       else
       {
-        Requires.NotNegativeInfinity(nameof(value), value);
+        Requires.NotNegativeInfinity( value);
       }
     }
 
@@ -134,11 +134,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentException>(nameof(value), () => Requires.NotPositiveInfinity(nameof(value), value));
+        _ = Assert.Throws<ArgumentException>( () => Requires.NotPositiveInfinity( value));
       }
       else
       {
-        Requires.NotPositiveInfinity(nameof(value), value);
+        Requires.NotPositiveInfinity( value);
       }
     }
 

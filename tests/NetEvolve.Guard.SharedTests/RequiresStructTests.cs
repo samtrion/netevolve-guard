@@ -14,11 +14,11 @@ public class RequiresStructTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(nameof(value), () => Requires.NotDefault(nameof(value), value));
+      _ = Assert.Throws<ArgumentException>( () => Requires.NotDefault( value));
     }
     else
     {
-      Requires.NotDefault(nameof(value), value);
+      Requires.NotDefault( value);
     }
   }
 
@@ -30,11 +30,11 @@ public class RequiresStructTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentNullException>(nameof(value), () => Requires.NotNull(nameof(value), value));
+      _ = Assert.Throws<ArgumentNullException>( () => Requires.NotNull( value));
     }
     else
     {
-      Requires.NotNull(nameof(value), value);
+      Requires.NotNull( value);
     }
   }
 
@@ -46,11 +46,11 @@ public class RequiresStructTests
   {
     if (throwException)
     {
-      _ = Assert.Throws(value.HasValue ? typeof(ArgumentException) : typeof(ArgumentNullException), () => Requires.NotNullOrDefault(nameof(value), value));
+      _ = Assert.Throws(value.HasValue ? typeof(ArgumentException) : typeof(ArgumentNullException), () => Requires.NotNullOrDefault( value));
     }
     else
     {
-      Requires.NotNullOrDefault(nameof(value), value);
+      Requires.NotNullOrDefault( value);
     }
   }
 }
