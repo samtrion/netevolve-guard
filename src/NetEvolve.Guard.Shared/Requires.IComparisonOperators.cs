@@ -2,6 +2,7 @@
 namespace NetEvolve.Guard;
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
 
 /// <summary>
@@ -9,49 +10,49 @@ using System.Runtime.Versioning;
 /// </summary>
 public static partial class Requires
 {
-    [RequiresPreviewFeatures]
-    public static void InBetween<T>(string? parameterName, T value, T minValue, T maxValue) where T : IComparisonOperators<T, T>
+  [RequiresPreviewFeatures]
+  public static void InBetween<T>(T value, T minValue, T maxValue, [CallerArgumentExpression("value")] string? parameterName = null) where T : IComparisonOperators<T, T>
+  {
+    if (minValue <= value != value <= maxValue)
     {
-        if (minValue <= value != value <= maxValue)
-        {
-            throw new ArgumentOutOfRangeException(parameterName, value, null);
-        }
+      throw new ArgumentOutOfRangeException(parameterName, value, null);
     }
+  }
 
-    [RequiresPreviewFeatures]
-    public static void GreaterThan<T>(string? parameterName, T value, T compareValue) where T : IComparisonOperators<T, T>
+  [RequiresPreviewFeatures]
+  public static void GreaterThan<T>(T value, T compareValue, [CallerArgumentExpression("value")] string? parameterName = null) where T : IComparisonOperators<T, T>
+  {
+    if (value <= compareValue)
     {
-        if (value <= compareValue)
-        {
-            throw new ArgumentOutOfRangeException(parameterName, value, null);
-        }
+      throw new ArgumentOutOfRangeException(parameterName, value, null);
     }
+  }
 
-    [RequiresPreviewFeatures]
-    public static void GreaterThanOrEqual<T>(string? parameterName, T value, T compareValue) where T : IComparisonOperators<T, T>
+  [RequiresPreviewFeatures]
+  public static void GreaterThanOrEqual<T>(T value, T compareValue, [CallerArgumentExpression("value")] string? parameterName = null) where T : IComparisonOperators<T, T>
+  {
+    if (value < compareValue)
     {
-        if (value < compareValue)
-        {
-            throw new ArgumentOutOfRangeException(parameterName, value, null);
-        }
+      throw new ArgumentOutOfRangeException(parameterName, value, null);
     }
+  }
 
-    [RequiresPreviewFeatures]
-    public static void LessThan<T>(string? parameterName, T value, T compareValue) where T : IComparisonOperators<T, T>
+  [RequiresPreviewFeatures]
+  public static void LessThan<T>(T value, T compareValue, [CallerArgumentExpression("value")] string? parameterName = null) where T : IComparisonOperators<T, T>
+  {
+    if (value >= compareValue)
     {
-        if (value >= compareValue)
-        {
-            throw new ArgumentOutOfRangeException(parameterName, value, null);
-        }
+      throw new ArgumentOutOfRangeException(parameterName, value, null);
     }
+  }
 
-    [RequiresPreviewFeatures]
-    public static void LessThanOrEqual<T>(string? parameterName, T value, T compareValue) where T : IComparisonOperators<T, T>
+  [RequiresPreviewFeatures]
+  public static void LessThanOrEqual<T>(T value, T compareValue, [CallerArgumentExpression("value")] string? parameterName = null) where T : IComparisonOperators<T, T>
+  {
+    if (value > compareValue)
     {
-        if (value > compareValue)
-        {
-            throw new ArgumentOutOfRangeException(parameterName, value, null);
-        }
+      throw new ArgumentOutOfRangeException(parameterName, value, null);
     }
+  }
 }
 #endif

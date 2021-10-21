@@ -10,7 +10,7 @@ public static partial class Requires
   {
     if (!value.Exists)
     {
-      throw new DirectoryNotFoundException($"Direc");
+      throw new DirectoryNotFoundException();
     }
   }
 }

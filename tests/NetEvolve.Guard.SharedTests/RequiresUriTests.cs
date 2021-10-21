@@ -14,11 +14,11 @@ public class RequiresUriTests
     var uri = new Uri(url, UriKind.RelativeOrAbsolute);
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.IsAbsolute(nameof(uri), uri));
+      _ = Assert.Throws<ArgumentException>(() => Requires.IsAbsolute(uri));
     }
     else
     {
-      Requires.IsAbsolute(nameof(uri), uri);
+      Requires.IsAbsolute(uri);
     }
   }
 
@@ -29,11 +29,11 @@ public class RequiresUriTests
     var uri = new Uri(url, UriKind.RelativeOrAbsolute);
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.IsRelative(nameof(uri), uri));
+      _ = Assert.Throws<ArgumentException>(() => Requires.IsRelative(uri));
     }
     else
     {
-      Requires.IsRelative(nameof(uri), uri);
+      Requires.IsRelative(uri);
     }
   }
   public static TheoryData GetUriData(bool invert) => new TheoryData<bool, string>

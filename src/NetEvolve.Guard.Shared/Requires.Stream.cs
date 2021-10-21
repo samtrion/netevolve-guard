@@ -2,13 +2,14 @@ namespace NetEvolve.Guard;
 
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 /// <summary>
 /// Common runtime checks that throw Exceptions on failure.
 /// </summary>
 public static partial class Requires
 {
-  public static void IsReadable(string? parameterName, Stream value)
+  public static void IsReadable(Stream value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (!value.CanRead)
     {
@@ -16,7 +17,7 @@ public static partial class Requires
     }
   }
 
-  public static void IsSeekable(string? parameterName, Stream value)
+  public static void IsSeekable(Stream value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (!value.CanSeek)
     {
@@ -24,7 +25,7 @@ public static partial class Requires
     }
   }
 
-  public static void IsWritable(string? parameterName, Stream value)
+  public static void IsWritable(Stream value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (!value.CanWrite)
     {
@@ -32,7 +33,7 @@ public static partial class Requires
     }
   }
 
-  public static void NotEmpty(string? parameterName, Stream value)
+  public static void NotEmpty(Stream value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (0u == (uint)value.Length)
     {

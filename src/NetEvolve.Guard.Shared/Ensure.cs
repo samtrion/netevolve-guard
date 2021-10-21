@@ -3,13 +3,14 @@ namespace NetEvolve.Guard;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 
 /// <summary>
 /// Common runtime checks that throw Exceptions on failure.
 /// </summary>
 public static class Ensure
 {
-  public static TTarget Cast<T, TTarget>(string? parameterName, [NotNull] T? value)
+  public static TTarget Cast<T, TTarget>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value is null)
     {
@@ -24,7 +25,7 @@ public static class Ensure
     return target;
   }
 
-  public static void That<T>(string? parameterName, T value, [NotNull] Expression<Predicate<T>> expression)
+  public static void That<T>(T value, [NotNull] Expression<Predicate<T>> expression, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (expression is null)
     {

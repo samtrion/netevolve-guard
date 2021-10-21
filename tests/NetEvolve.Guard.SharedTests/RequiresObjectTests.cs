@@ -15,11 +15,11 @@ public class RequiresObjectTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentNullException>(nameof(value), () => Requires.NotNull(nameof(value), value));
+      _ = Assert.Throws<ArgumentNullException>( () => Requires.NotNull( value));
     }
     else
     {
-      _ = Requires.NotNull(nameof(value), value);
+      _ = Requires.NotNull( value);
     }
   }
 }
