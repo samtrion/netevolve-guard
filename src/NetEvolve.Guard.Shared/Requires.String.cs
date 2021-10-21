@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 /// </summary>
 public static partial class Requires
 {
-  public static string NotNullOrEmpty(string? parameterName, [NotNull] string? value)
+  public static string NotNullOrEmpty([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value is null)
     {
@@ -25,7 +25,7 @@ public static partial class Requires
     return value;
   }
 
-  public static string NotNullOrWhiteSpace(string? parameterName, [NotNull] string? value)
+  public static string NotNullOrWhiteSpace([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value is null)
     {

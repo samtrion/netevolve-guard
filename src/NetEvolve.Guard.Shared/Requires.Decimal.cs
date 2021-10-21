@@ -2,6 +2,7 @@
 namespace NetEvolve.Guard;
 
 using System;
+using System.Runtime.CompilerServices;
 using CompareValue = System.Decimal;
 
 /// <summary>
@@ -9,7 +10,7 @@ using CompareValue = System.Decimal;
 /// </summary>
 public static partial class Requires
 {
-  public static void InBetween(string? parameterName, CompareValue value, CompareValue minValue, CompareValue maxValue)
+  public static void InBetween(CompareValue value, CompareValue minValue, CompareValue maxValue, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (minValue <= value != value <= maxValue)
     {
@@ -17,7 +18,7 @@ public static partial class Requires
     }
   }
 
-  public static void GreaterThan(string? parameterName, CompareValue value, CompareValue compareValue)
+  public static void GreaterThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value <= compareValue)
     {
@@ -25,7 +26,7 @@ public static partial class Requires
     }
   }
 
-  public static void GreaterThanOrEqual(string? parameterName, CompareValue value, CompareValue compareValue)
+  public static void GreaterThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value < compareValue)
     {
@@ -33,7 +34,7 @@ public static partial class Requires
     }
   }
 
-  public static void LessThan(string? parameterName, CompareValue value, CompareValue compareValue)
+  public static void LessThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value >= compareValue)
     {
@@ -41,7 +42,7 @@ public static partial class Requires
     }
   }
 
-  public static void LessThanOrEqual(string? parameterName, CompareValue value, CompareValue compareValue)
+  public static void LessThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value > compareValue)
     {

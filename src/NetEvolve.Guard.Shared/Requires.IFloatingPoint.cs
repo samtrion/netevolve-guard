@@ -2,6 +2,7 @@
 namespace NetEvolve.Guard;
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
 
 /// <summary>
@@ -10,7 +11,7 @@ using System.Runtime.Versioning;
 public static partial class Requires
 {
     [RequiresPreviewFeatures]
-    public static void NotNaN<T>(string? parameterName, T value) where T : IFloatingPoint<T>
+    public static void NotNaN<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
     {
         if (T.IsNaN(value))
         {
@@ -19,7 +20,7 @@ public static partial class Requires
     }
 
     [RequiresPreviewFeatures]
-    public static void NotInfinity<T>(string? parameterName, T value) where T : IFloatingPoint<T>
+    public static void NotInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
     {
         if (T.IsInfinity(value))
         {
@@ -28,7 +29,7 @@ public static partial class Requires
     }
 
     [RequiresPreviewFeatures]
-    public static void NotNegativeInfinity<T>(string? parameterName, T value) where T : IFloatingPoint<T>
+    public static void NotNegativeInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
     {
         if (T.IsNegativeInfinity(value))
         {
@@ -37,7 +38,7 @@ public static partial class Requires
     }
 
     [RequiresPreviewFeatures]
-    public static void NotPositiveInfinity<T>(string? parameterName, T value) where T : IFloatingPoint<T>
+    public static void NotPositiveInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
     {
         if (T.IsPositiveInfinity(value))
         {
