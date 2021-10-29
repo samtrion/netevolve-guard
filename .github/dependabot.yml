@@ -6,18 +6,9 @@
 version: 2
 updates:
   - package-ecosystem: "nuget" # See documentation for possible values
-    directory: "/src/NetEvolve.Guard.Experimental" # NetEvolve.Guard.Experimental.csproj
+    directory: "/"
     schedule:
       interval: "daily"
-  - package-ecosystem: "nuget" # See documentation for possible values
-    directory: "/src/NetEvolve.Guard" # NetEvolve.Guard.csproj
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "nuget" # See documentation for possible values
-    directory: "/tests/NetEvolve.Guard.Experimental.Tests" # NetEvolve.Guard.Experimental.Tests.csproj
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "nuget" # See documentation for possible values
-    directory: "/tests/NetEvolve.Guard.Tests" # NetEvolve.Guard.Tests.csproj
-    schedule:
-      interval: "daily"
+    commit-message:
+      prefix: chore
+      prefix-development: chore(dev)
