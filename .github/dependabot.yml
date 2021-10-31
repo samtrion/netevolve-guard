@@ -5,6 +5,13 @@
 
 version: 2
 updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for updates to GitHub Actions every weekday
+      interval: "daily"
+    reviewers:
+      - "samtrion"
   - package-ecosystem: "nuget" # See documentation for possible values
     directory: "/"
     schedule:
@@ -12,3 +19,5 @@ updates:
     commit-message:
       prefix: chore
       prefix-development: chore(dev)
+    reviewers:
+      - "samtrion"
