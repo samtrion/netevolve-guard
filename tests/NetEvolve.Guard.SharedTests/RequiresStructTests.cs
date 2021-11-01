@@ -18,7 +18,7 @@ public class RequiresStructTests
     }
     else
     {
-      Requires.NotDefault( value);
+      Requires.NotDefault(value);
     }
   }
 
@@ -34,7 +34,10 @@ public class RequiresStructTests
     }
     else
     {
-      Requires.NotNull( value);
+      var result = Requires.NotNull(value);
+
+      _ = Assert.IsType<int>(result);
+      Assert.Equal(value.Value, result);
     }
   }
 
@@ -50,7 +53,10 @@ public class RequiresStructTests
     }
     else
     {
-      Requires.NotNullOrDefault( value);
+      var result = Requires.NotNullOrDefault(value);
+
+      _ = Assert.IsType<int>(result);
+      Assert.Equal(value.Value, result);
     }
   }
 }

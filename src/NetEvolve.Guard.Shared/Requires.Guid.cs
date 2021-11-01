@@ -16,7 +16,7 @@ public static partial class Requires
     }
   }
 
-  public static void NotNullOrEmpty(Guid? value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static Guid NotNullOrEmpty(Guid? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (!value.HasValue)
     {
@@ -27,5 +27,7 @@ public static partial class Requires
     {
       throw new ArgumentException(null, parameterName);
     }
+
+    return value.Value;
   }
 }

@@ -40,7 +40,7 @@ public class RequiresGuidTests
     }
     else
     {
-      Requires.NotNullOrEmpty( value);
+      _ = Requires.NotNullOrEmpty(value);
     }
   }
 }
