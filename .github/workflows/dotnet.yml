@@ -15,6 +15,7 @@ jobs:
   build:
     name: Run
     runs-on: ubuntu-latest
+    if: "!startsWith(github.event.head_commit.message, 'chore')"
 
     steps:
     - name: Checkout
