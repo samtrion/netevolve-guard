@@ -44,49 +44,14 @@ jobs:
         useConfigFile: true
         configFilePath: GitVersion.yml
 
-    - name: Display GitVersion outputs
-      run: |
-        echo "Major: $GITVERSION_major"
-        echo "Minor: $GITVERSION_minor"
-        echo "Patch: $GITVERSION_patch"
-        echo "PreReleaseTag: $GITVERSION_preReleaseTag"
-        echo "PreReleaseTagWithDash: $GITVERSION_preReleaseTagWithDash"
-        echo "PreReleaseLabel: $GITVERSION_preReleaseLabel"
-        echo "PreReleaseNumber: $GITVERSION_preReleaseNumber"
-        echo "WeightedPreReleaseNumber: $GITVERSION_weightedPreReleaseNumber"
-        echo "BuildMetaData: $GITVERSION_buildMetaData"
-        echo "BuildMetaDataPadded: $GITVERSION_buildMetaDataPadded"
-        echo "FullBuildMetaData: $GITVERSION_fullBuildMetaData"
-        echo "MajorMinorPatch: $GITVERSION_majorMinorPatch"
-        echo "SemVer: $GITVERSION_semVer"
-        echo "LegacySemVer: $GITVERSION_legacySemVer"
-        echo "LegacySemVerPadded: $GITVERSION_legacySemVerPadded"
-        echo "AssemblySemVer: $GITVERSION_assemblySemVer"
-        echo "AssemblySemFileVer: $GITVERSION_assemblySemFileVer"
-        echo "FullSemVer: $GITVERSION_fullSemVer"
-        echo "InformationalVersion: $GITVERSION_informationalVersion"
-        echo "BranchName: $GITVERSION_branchName"
-        echo "EscapedBranchName: $GITVERSION_escapedBranchName"
-        echo "Sha: $GITVERSION_sha"
-        echo "ShortSha: $GITVERSION_shortSha"
-        echo "NuGetVersionV2: $GITVERSION_nuGetVersionV2"
-        echo "NuGetVersion: $GITVERSION_nuGetVersion"
-        echo "NuGetPreReleaseTagV2: $GITVERSION_nuGetPreReleaseTagV2"
-        echo "NuGetPreReleaseTag: $GITVERSION_nuGetPreReleaseTag"
-        echo "VersionSourceSha: $GITVERSION_versionSourceSha"
-        echo "CommitsSinceVersionSource: $GITVERSION_commitsSinceVersionSource"
-        echo "CommitsSinceVersionSourcePadded: $GITVERSION_commitsSinceVersionSourcePadded"
-        echo "UncommittedChanges: $GITVERSION_uncommittedChanges"
-        echo "CommitDate: $GITVERSION_commitDate"
-
     - name: Restore NuGet Dependencies
       run: dotnet restore
 
     - name: Build Solution
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-restore
 
     - name: Test Solution
-      run: dotnet test --configuration Release --no-build --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/coverage.json\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json,$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
+      run: dotnet test --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-build --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/coverage.json\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json,$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
 
     - name: Upload Coverage Reports to Codecov
       uses: codecov/codecov-action@v2
