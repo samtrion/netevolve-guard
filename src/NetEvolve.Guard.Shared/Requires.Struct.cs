@@ -17,15 +17,17 @@ public static partial class Requires
     }
   }
 
-  public static void NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
+  public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
   {
     if (!value.HasValue)
     {
       throw new ArgumentNullException(parameterName);
     }
+
+    return value.Value;
   }
 
-  public static void NotNullOrDefault<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
+  public static T NotNullOrDefault<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
   {
     if (!value.HasValue)
     {
@@ -36,5 +38,7 @@ public static partial class Requires
     {
       throw new ArgumentException(null, parameterName);
     }
+
+    return value.Value;
   }
 }
