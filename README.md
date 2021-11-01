@@ -1,12 +1,12 @@
 # NetEvolve.Guard
 
-Basic input validation via the `Requires` class throws an `ArgumentException`, `ArgumentNullException` or other Exception types. The last parameter `parameterName` is optional and is automatically populated by the .NET Framework, based on the `CallerArgumentExpressionAttribute` functionality.
+Basic input validation via the `Requires` class throws an `ArgumentException`, `ArgumentNullException` or other Exception types. The last parameter `parameterName` is optional and is automatically populated by .NET, based on the `CallerArgumentExpressionAttribute` functionality.
 ```csharp
 Requires.NotNull(arg1); // Or Requires.NotNull(arg1, nameof(arg1));
 Requires.InBetween(arg1, 1, 5); // Or Requires.InBetween(arg1, 1, 5, nameof(arg1));
 ```
 ## Experimental Package
-This package [`NetEvolve.Guard.Experimental`][2] is based on the new .NET 6 Preview features, such as [`IComparisonOperators`][3] or [`IFloatingPoint`][4]. This replaces the single implementations for numeric type method, this significantly reduced the packet size without loss of functionality.
+This package [`NetEvolve.Guard.Experimental`][2] is based on the new .NET 6 Preview features, such as [`IComparisonOperators`][3] or [`IFloatingPoint`][4]. This replaces the single implementations for numeric type methods, this significantly reduced the packet size without loss of functionality.
 
 ## Pipeline & Coverage Status
 
