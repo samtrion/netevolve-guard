@@ -66,5 +66,5 @@ jobs:
       run: dotnet pack --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-build -o packages --include-symbols -p:SymbolPackageFormat=snupkg
 
     - name: Publish NuGet Package
-      if: github.ref == 'refs/heads/main'
+      #if: github.ref == 'refs/heads/main'
       run: dotnet nuget push "packages/*.nupkg" -s https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{ secrets.NUGET_TOKEN }}
