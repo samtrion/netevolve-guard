@@ -16,15 +16,15 @@ public class RequiresStringTests
   {
     if (throwExceptionNull)
     {
-      _ = Assert.Throws<ArgumentNullException>( () => Requires.NotNullOrEmpty( value));
+      _ = Assert.Throws<ArgumentNullException>(() => Requires.NotNullOrEmpty(value));
     }
     else if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>( () => Requires.NotNullOrEmpty( value));
+      _ = Assert.Throws<ArgumentException>(() => Requires.NotNullOrEmpty(value));
     }
     else
     {
-      _ = Requires.NotNullOrEmpty( value);
+      _ = Requires.NotNullOrEmpty(value);
     }
   }
 
@@ -37,15 +37,15 @@ public class RequiresStringTests
   {
     if (throwExceptionNull)
     {
-      _ = Assert.Throws<ArgumentNullException>( () => Requires.NotNullOrWhiteSpace( value));
+      _ = Assert.Throws<ArgumentNullException>(() => Requires.NotNullOrWhiteSpace(value));
     }
     else if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>( () => Requires.NotNullOrWhiteSpace( value));
+      _ = Assert.Throws<ArgumentException>(() => Requires.NotNullOrWhiteSpace(value));
     }
     else
     {
-      _ = Requires.NotNullOrWhiteSpace( value);
+      _ = Requires.NotNullOrWhiteSpace(value);
     }
   }
 }
