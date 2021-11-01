@@ -17,6 +17,7 @@
     <!-- Package Configuration -->
     <PackageId>$(MSBuildProjectName)</PackageId>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/samtrion/netevolve-guard</PackageProjectUrl>
     <PackageTags>storage</PackageTags>
     <RepositoryType>git</RepositoryType>

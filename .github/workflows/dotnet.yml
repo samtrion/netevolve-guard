@@ -19,6 +19,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Setup .NET 5.x
       uses: actions/setup-dotnet@v1
@@ -31,14 +33,25 @@ jobs:
         dotnet-version: '6.x'
         include-prerelease: true
 
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.7
+      with:
+        versionSpec: '5.x'
+
+    - name: Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.7
+      with:
+        useConfigFile: true
+        configFilePath: GitVersion.yml
+
     - name: Restore NuGet Dependencies
       run: dotnet restore
 
     - name: Build Solution
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-restore
 
     - name: Test Solution
-      run: dotnet test --configuration Release --no-build --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/coverage.json\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json,$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
+      run: dotnet test --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-build --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/coverage.json\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json,$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"json,opencover\" -m:1
 
     - name: Upload Coverage Reports to Codecov
       uses: codecov/codecov-action@v2
@@ -48,3 +61,11 @@ jobs:
         files: ./results/coverage.net5.0.json,./results/coverage.net6.0.json
         fail_ci_if_error: true
         flags: unittests
+
+    - name: Pack NuGet Packages
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      run: dotnet pack --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-build -o packages --include-symbols -p:SymbolPackageFormat=snupkg
+
+    - name: Publish NuGet Package
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      run: dotnet nuget push "packages/*.nupkg" -s https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{ secrets.NUGET_TOKEN }}
