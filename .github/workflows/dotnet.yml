@@ -61,3 +61,6 @@ jobs:
         files: ./results/coverage.net5.0.json,./results/coverage.net6.0.json
         fail_ci_if_error: true
         flags: unittests
+
+    - name: Pack NuGet Packages
+      run: dotnet pack --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-build -o packages
