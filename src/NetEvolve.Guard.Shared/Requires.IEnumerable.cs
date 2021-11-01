@@ -37,11 +37,18 @@ public static partial class Requires
     }
   }
 
-  public static void NotNullOrEmpty<T>([NotNull] IEnumerable<T> value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static IEnumerable<T> NotNullOrEmpty<T>([NotNull] IEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
-    if ((value is ICollection<T> collection && 0u == (uint)collection.Count) || !value.Any())
+    if (value is null)
+    {
+      throw new ArgumentNullException(parameterName);
+    }
+
+    if ((value.TryGetNonEnumeratedCount(out var count) && 0u == (uint)count) || !value.Any())
     {
       throw new ArgumentException(null, parameterName);
     }
+
+    return value;
   }
 }
