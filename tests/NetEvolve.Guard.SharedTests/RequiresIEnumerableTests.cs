@@ -51,6 +51,14 @@ public class RequiresIEnumerableTests
     }
   }
 
+  [Fact]
+  public void NotNullOrEmpty_Null_ArgumentNullException()
+  {
+    IEnumerable<string>? values = null;
+
+    Assert.Throws<ArgumentNullException>(nameof(values), () => Requires.NotNullOrEmpty(values));
+  }
+
   [Theory]
   [MemberData(nameof(GetNotNullOrEmptyData))]
   public void NotNullOrEmpty_Theory_Expected(bool throwException, IEnumerable<string?> values)
@@ -61,7 +69,7 @@ public class RequiresIEnumerableTests
     }
     else
     {
-      Requires.NotNullOrEmpty(values);
+      _ = Requires.NotNullOrEmpty(values);
     }
   }
 
