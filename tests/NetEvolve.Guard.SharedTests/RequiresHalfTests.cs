@@ -23,11 +23,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.InBetween( value, min, max));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(() => Requires.InBetween(value, min, max));
       }
       else
       {
-        Requires.InBetween( value, min, max);
+        Requires.InBetween(value, min, max);
       }
     }
 
@@ -37,11 +37,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.GreaterThan( value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(() => Requires.GreaterThan(value, compareValue));
       }
       else
       {
-        Requires.GreaterThan( value, compareValue);
+        Requires.GreaterThan(value, compareValue);
       }
     }
 
@@ -51,11 +51,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.GreaterThanOrEqual( value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(() => Requires.GreaterThanOrEqual(value, compareValue));
       }
       else
       {
-        Requires.GreaterThanOrEqual( value, compareValue);
+        Requires.GreaterThanOrEqual(value, compareValue);
       }
     }
 
@@ -65,11 +65,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.LessThan( value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(() => Requires.LessThan(value, compareValue));
       }
       else
       {
-        Requires.LessThan( value, compareValue);
+        Requires.LessThan(value, compareValue);
       }
     }
 
@@ -79,11 +79,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.LessThanOrEqual( value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(() => Requires.LessThanOrEqual(value, compareValue));
       }
       else
       {
-        Requires.LessThanOrEqual( value, compareValue);
+        Requires.LessThanOrEqual(value, compareValue);
       }
     }
 
@@ -93,11 +93,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentException>( () => Requires.NotNaN( value));
+        _ = Assert.Throws<ArgumentException>(() => Requires.NotNaN(value));
       }
       else
       {
-        Requires.NotNaN( value);
+        Requires.NotNaN(value);
       }
     }
 
@@ -107,11 +107,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentException>( () => Requires.NotInfinity( value));
+        _ = Assert.Throws<ArgumentException>(() => Requires.NotInfinity(value));
       }
       else
       {
-        Requires.NotInfinity( value);
+        Requires.NotInfinity(value);
       }
     }
 
@@ -121,11 +121,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentException>( () => Requires.NotNegativeInfinity( value));
+        _ = Assert.Throws<ArgumentException>(() => Requires.NotNegativeInfinity(value));
       }
       else
       {
-        Requires.NotNegativeInfinity( value);
+        Requires.NotNegativeInfinity(value);
       }
     }
 
@@ -135,11 +135,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentException>( () => Requires.NotPositiveInfinity( value));
+        _ = Assert.Throws<ArgumentException>(() => Requires.NotPositiveInfinity(value));
       }
       else
       {
-        Requires.NotPositiveInfinity( value);
+        Requires.NotPositiveInfinity(value);
       }
     }
 

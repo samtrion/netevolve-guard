@@ -15,11 +15,11 @@ public class RequiresGuidTests
     var value = Guid.Parse(valueString);
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>( () => Requires.NotEmpty( value));
+      _ = Assert.Throws<ArgumentException>(() => Requires.NotEmpty(value));
     }
     else
     {
-      Requires.NotEmpty( value);
+      Requires.NotEmpty(value);
     }
   }
 
@@ -32,11 +32,11 @@ public class RequiresGuidTests
     Guid? value = valueString is not null ? Guid.Parse(valueString) : null;
     if (throwExceptionNull)
     {
-      _ = Assert.Throws<ArgumentNullException>( () => Requires.NotNullOrEmpty( value));
+      _ = Assert.Throws<ArgumentNullException>(() => Requires.NotNullOrEmpty(value));
     }
     else if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>( () => Requires.NotNullOrEmpty( value));
+      _ = Assert.Throws<ArgumentException>(() => Requires.NotNullOrEmpty(value));
     }
     else
     {
