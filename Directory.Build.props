@@ -19,7 +19,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/samtrion/netevolve-guard</PackageProjectUrl>
-    <PackageTags>argument;parameter;guard;requires;validation;contract;assert;assertion;exception</PackageTags>
+    <PackageTags>argument;inputvalidation;parameter;guard;requires;validation;contract;assert;assertion;exception</PackageTags>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/samtrion/netevolve-guard</RepositoryUrl>
     <Authors>Martin Stühmer</Authors>
