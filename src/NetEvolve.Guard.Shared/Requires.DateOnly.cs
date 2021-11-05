@@ -5,9 +5,6 @@ using System;
 using System.Runtime.CompilerServices;
 using CompareValue = System.DateOnly;
 
-/// <summary>
-/// Common runtime checks that throw Exceptions on failure.
-/// </summary>
 public static partial class Requires
 {
   public static void InBetween(CompareValue value, CompareValue minValue, CompareValue maxValue, [CallerArgumentExpression("value")] string? parameterName = null)
