@@ -6,14 +6,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 public static partial class Requires
 {
   [StackTraceHidden]
-  public static async ValueTask ItemsNotNullAsync<T>([NotNull] IAsyncEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = null) where T : class
+  public static async ValueTask ItemsNotNullAsync<T>([NotNull] IAsyncEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = null, CancellationToken cancellationToken = default) where T : class
   {
-    if (await value.InternalAnyAsync(ValueIsNull))
+    if (await value.InternalAnyAsync(ValueIsNull, cancellationToken))
     {
       throw new ArgumentException(null, parameterName);
     }
@@ -22,18 +23,18 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static async ValueTask ItemsNotNullOrEmptyAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static async ValueTask ItemsNotNullOrEmptyAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null, CancellationToken cancellationToken = default)
   {
-    if (await value.InternalAnyAsync(string.IsNullOrEmpty))
+    if (await value.InternalAnyAsync(string.IsNullOrEmpty, cancellationToken))
     {
       throw new ArgumentException(null, parameterName);
     }
   }
 
   [StackTraceHidden]
-  public static async ValueTask ItemsNotNullOrWhiteSpaceAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static async ValueTask ItemsNotNullOrWhiteSpaceAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null, CancellationToken cancellationToken = default)
   {
-    if (await value.InternalAnyAsync(string.IsNullOrWhiteSpace))
+    if (await value.InternalAnyAsync(string.IsNullOrWhiteSpace, cancellationToken))
     {
       throw new ArgumentException(null, parameterName);
     }
@@ -48,7 +49,7 @@ public static partial class Requires
       throw new ArgumentNullException(parameterName);
     }
 
-    if (!await value.InternalAnyAsync())
+    if (!await value.InternalAnyAsync().ConfigureAwait(false))
     {
       throw new ArgumentException(null, parameterName);
     }
@@ -59,14 +60,14 @@ public static partial class Requires
   {
     await using (var enumerator = value.GetAsyncEnumerator())
     {
-      return await enumerator.MoveNextAsync();
+      return await enumerator.MoveNextAsync().ConfigureAwait(false);
     }
   }
 
   [StackTraceHidden]
-  private static async ValueTask<bool> InternalAnyAsync<T>(this IAsyncEnumerable<T> value, Func<T, bool> predicate)
+  private static async ValueTask<bool> InternalAnyAsync<T>(this IAsyncEnumerable<T> value, Func<T, bool> predicate, CancellationToken cancellationToken)
   {
-    await foreach (var item in value.ConfigureAwait(false))
+    await foreach (var item in value.WithCancellation(cancellationToken).ConfigureAwait(false))
     {
       if (predicate(item))
       {
