@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 
 public static partial class Requires
 {
+  [StackTraceHidden]
   [return: NotNull]
   public static string NotNullOrEmpty([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
@@ -23,6 +24,7 @@ public static partial class Requires
     return value;
   }
 
+  [StackTraceHidden]
   [return: NotNull]
   public static string NotNullOrWhiteSpace([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
@@ -41,6 +43,7 @@ public static partial class Requires
 
   [DebuggerStepThrough]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
+  [StackTraceHidden]
   private static bool IsWhiteSpace(string value)
   {
     for (var i = 0; i < value.Length; i++)

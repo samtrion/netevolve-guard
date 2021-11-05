@@ -1,6 +1,7 @@
 namespace NetEvolve.Guard;
 
 using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
@@ -10,6 +11,7 @@ using System.Runtime.CompilerServices;
 /// </summary>
 public static class Ensure
 {
+  [StackTraceHidden]
   [return: NotNull]
   public static TTarget Cast<T, TTarget>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
@@ -26,6 +28,7 @@ public static class Ensure
     return target;
   }
 
+  [StackTraceHidden]
   public static void That<T>(T value, [NotNull] Expression<Predicate<T>> expression, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (expression is null)
