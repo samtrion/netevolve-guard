@@ -14,7 +14,7 @@ public class RequiresStructTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.NotDefault(value));
+      _ = Assert.Throws<ArgumentException>(nameof(value), () => Requires.NotDefault(value));
     }
     else
     {
@@ -30,7 +30,7 @@ public class RequiresStructTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentNullException>(() => Requires.NotNull(value));
+      _ = Assert.Throws<ArgumentNullException>(nameof(value), () => Requires.NotNull(value));
     }
     else
     {

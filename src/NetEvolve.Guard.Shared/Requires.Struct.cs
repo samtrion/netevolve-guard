@@ -5,9 +5,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-/// <summary>
-/// Common runtime checks that throw Exceptions on failure.
-/// </summary>
 public static partial class Requires
 {
   [StackTraceHidden]
@@ -20,6 +17,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
+  [return: NotNull]
   public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
   {
     if (!value.HasValue)
@@ -31,6 +29,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
+  [return: NotNull]
   public static T NotNullOrDefault<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
   {
     if (!value.HasValue)

@@ -7,9 +7,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-/// <summary>
-/// Common runtime checks that throw Exceptions on failure.
-/// </summary>
 public static partial class Requires
 {
   [StackTraceHidden]
@@ -42,6 +39,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
+  [return: NotNull]
   public static IEnumerable<T> NotNullOrEmpty<T>([NotNull] IEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value is null)

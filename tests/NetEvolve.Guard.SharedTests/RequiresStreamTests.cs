@@ -15,7 +15,7 @@ public class RequiresStreamTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.IsReadable(stream));
+      _ = Assert.Throws<ArgumentException>(nameof(stream), () => Requires.IsReadable(stream));
     }
     else
     {
@@ -29,7 +29,7 @@ public class RequiresStreamTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.IsSeekable(stream));
+      _ = Assert.Throws<ArgumentException>(nameof(stream), () => Requires.IsSeekable(stream));
     }
     else
     {
@@ -43,7 +43,7 @@ public class RequiresStreamTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.IsWritable(stream));
+      _ = Assert.Throws<ArgumentException>(nameof(stream), () => Requires.IsWritable(stream));
     }
     else
     {
@@ -57,7 +57,7 @@ public class RequiresStreamTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.NotEmpty(stream));
+      _ = Assert.Throws<ArgumentException>(nameof(stream), () => Requires.NotEmpty(stream));
     }
     else
     {

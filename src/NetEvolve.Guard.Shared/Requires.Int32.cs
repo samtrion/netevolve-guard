@@ -6,9 +6,6 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using CompareValue = System.Int32;
 
-/// <summary>
-/// Common runtime checks that throw Exceptions on failure.
-/// </summary>
 public static partial class Requires
 {
   [StackTraceHidden]
