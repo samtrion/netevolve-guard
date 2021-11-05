@@ -34,6 +34,7 @@ public static partial class Requires
     }
   }
 
+  [return: NotNull]
   public static IEnumerable<T> NotNullOrEmpty<T>([NotNull] IEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value is null)

@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 /// </summary>
 public static class Ensure
 {
+  [return: NotNull]
   public static TTarget Cast<T, TTarget>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value is null)

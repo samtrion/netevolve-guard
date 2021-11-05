@@ -14,6 +14,7 @@ public static partial class Requires
     }
   }
 
+  [return: NotNull]
   public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
   {
     if (!value.HasValue)
@@ -24,6 +25,7 @@ public static partial class Requires
     return value.Value;
   }
 
+  [return: NotNull]
   public static T NotNullOrDefault<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
   {
     if (!value.HasValue)
