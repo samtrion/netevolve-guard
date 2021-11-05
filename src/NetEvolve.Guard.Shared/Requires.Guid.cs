@@ -1,11 +1,13 @@
 namespace NetEvolve.Guard;
 
 using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 public static partial class Requires
 {
+  [StackTraceHidden]
   public static void NotEmpty(Guid value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (value == Guid.Empty)
@@ -14,6 +16,7 @@ public static partial class Requires
     }
   }
 
+  [StackTraceHidden]
   [return: NotNull]
   public static Guid NotNullOrEmpty(Guid? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {

@@ -9,6 +9,7 @@
     <Import_RootNamespace>NetEvolve.Guard.Tests</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresIAsyncEnumerableTests.cs" />
     <Compile Include="..\NetEvolve.Guard.SharedTests\EnsureTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresCharTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDateOnlyTests.cs" />

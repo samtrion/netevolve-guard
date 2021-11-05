@@ -118,5 +118,27 @@ namespace NetEvolve.Guard.Tests
       { false, BaseValue, BaseValue },
       { false, BaseValue, MaxValue }
     };
+
+#if NET6_0_OR_GREATER
+    [Theory]
+    [MemberData(nameof(GetNotPow2Data))]
+    public void NotPow2_Theory_Expected(bool throwException, CompareValue value)
+    {
+      if (throwException)
+      {
+        _ = Assert.Throws<ArgumentException>(nameof(value), () => Requires.NotPow2(value));
+      }
+      else
+      {
+        Requires.NotPow2(value);
+      }
+    }
+
+    public static TheoryData GetNotPow2Data => new TheoryData<bool, CompareValue>
+    {
+      { true, 63 },
+      { false, 64 }
+    };
+#endif
   }
 }
