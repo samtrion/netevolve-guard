@@ -63,7 +63,7 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         directory: $GITHUB_WORKSPACE
         files: ./results/coverage.net5.0.json,./results/coverage.net6.0.json
-        fail_ci_if_error: true
+        fail_ci_if_error: false
         flags: unittests
 
     - name: Pack NuGet Packages
