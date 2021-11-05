@@ -14,7 +14,7 @@ public class RequiresUriTests
     var uri = new Uri(url, UriKind.RelativeOrAbsolute);
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.IsAbsolute(uri));
+      _ = Assert.Throws<ArgumentException>(nameof(uri), () => Requires.IsAbsolute(uri));
     }
     else
     {
@@ -29,7 +29,7 @@ public class RequiresUriTests
     var uri = new Uri(url, UriKind.RelativeOrAbsolute);
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.IsRelative(uri));
+      _ = Assert.Throws<ArgumentException>(nameof(uri), () => Requires.IsRelative(uri));
     }
     else
     {

@@ -20,11 +20,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.InBetween( value, min, max));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.InBetween(value, min, max));
       }
       else
       {
-        Requires.InBetween( value, min, max);
+        Requires.InBetween(value, min, max);
       }
     }
 
@@ -34,11 +34,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.GreaterThan( value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.GreaterThan(value, compareValue));
       }
       else
       {
-        Requires.GreaterThan( value, compareValue);
+        Requires.GreaterThan(value, compareValue);
       }
     }
 
@@ -48,11 +48,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.GreaterThanOrEqual( value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.GreaterThanOrEqual(value, compareValue));
       }
       else
       {
-        Requires.GreaterThanOrEqual( value, compareValue);
+        Requires.GreaterThanOrEqual(value, compareValue);
       }
     }
 
@@ -62,11 +62,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.LessThan( value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.LessThan(value, compareValue));
       }
       else
       {
-        Requires.LessThan( value, compareValue);
+        Requires.LessThan(value, compareValue);
       }
     }
 
@@ -76,11 +76,11 @@ namespace NetEvolve.Guard.Tests
     {
       if (throwException)
       {
-        _ = Assert.Throws<ArgumentOutOfRangeException>( () => Requires.LessThanOrEqual( value, compareValue));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.LessThanOrEqual(value, compareValue));
       }
       else
       {
-        Requires.LessThanOrEqual( value, compareValue);
+        Requires.LessThanOrEqual(value, compareValue);
       }
     }
 
