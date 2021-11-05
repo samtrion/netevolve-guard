@@ -11,6 +11,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Ensure.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interops\EnumerableExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.IAsyncEnumerable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Requires.IBinaryNumber.cs" />
     <Compile Include="..\NetEvolve.Guard.Shared\Interops\CallerArgumentExpressionAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interops\Nullable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Requires.Half.cs" />
