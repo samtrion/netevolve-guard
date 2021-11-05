@@ -13,14 +13,14 @@ public class EnsureTests
   public void Cast_ValueNull_Exception()
   {
     List<string>? value = null;
-    _ = Assert.Throws<ArgumentNullException>(() => Ensure.Cast<List<string>, IEnumerable<string>>(value));
+    _ = Assert.Throws<ArgumentNullException>(nameof(value), () => Ensure.Cast<List<string>, IEnumerable<string>>(value));
   }
 
   [Fact]
   public void Cast_ValueInvalid_Exception()
   {
     var value = new List<string>();
-    _ = Assert.Throws<ArgumentException>(() => Ensure.Cast<List<string>, IEnumerable<int?>>(value));
+    _ = Assert.Throws<ArgumentException>(nameof(value), () => Ensure.Cast<List<string>, IEnumerable<int?>>(value));
   }
 
   [Fact]
@@ -41,7 +41,7 @@ public class EnsureTests
   public void That_ValueInvalid_Exception()
   {
     var value = new List<string>();
-    _ = Assert.Throws<ArgumentException>(() => Ensure.That(value, x => x.Any()));
+    _ = Assert.Throws<ArgumentException>(nameof(value), () => Ensure.That(value, x => x.Any()));
   }
 
   [Fact]

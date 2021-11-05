@@ -15,7 +15,7 @@ public class RequiresIEnumerableTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.ItemsNotNull(values));
+      _ = Assert.Throws<ArgumentException>(nameof(values), () => Requires.ItemsNotNull(values));
     }
     else
     {
@@ -29,7 +29,7 @@ public class RequiresIEnumerableTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.ItemsNotNullOrEmpty(values));
+      _ = Assert.Throws<ArgumentException>(nameof(values), () => Requires.ItemsNotNullOrEmpty(values));
     }
     else
     {
@@ -43,7 +43,7 @@ public class RequiresIEnumerableTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.ItemsNotNullOrWhiteSpace(values));
+      _ = Assert.Throws<ArgumentException>(nameof(values), () => Requires.ItemsNotNullOrWhiteSpace(values));
     }
     else
     {
@@ -56,7 +56,7 @@ public class RequiresIEnumerableTests
   {
     IEnumerable<string>? values = null;
 
-    Assert.Throws<ArgumentNullException>(nameof(values), () => Requires.NotNullOrEmpty(values));
+    _ = Assert.Throws<ArgumentNullException>(nameof(values), () => Requires.NotNullOrEmpty(values));
   }
 
   [Theory]
@@ -65,7 +65,7 @@ public class RequiresIEnumerableTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentException>(() => Requires.NotNullOrEmpty(values));
+      _ = Assert.Throws<ArgumentException>(nameof(values), () => Requires.NotNullOrEmpty(values));
     }
     else
     {

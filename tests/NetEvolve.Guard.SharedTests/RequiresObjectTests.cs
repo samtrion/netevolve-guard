@@ -15,7 +15,7 @@ public class RequiresObjectTests
   {
     if (throwException)
     {
-      _ = Assert.Throws<ArgumentNullException>(() => Requires.NotNull(value));
+      _ = Assert.Throws<ArgumentNullException>(nameof(value), () => Requires.NotNull(value));
     }
     else
     {
