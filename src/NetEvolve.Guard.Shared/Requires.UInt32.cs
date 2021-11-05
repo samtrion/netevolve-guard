@@ -49,5 +49,15 @@ public static partial class Requires
       throw new ArgumentOutOfRangeException(parameterName, value, null);
     }
   }
+
+#if NET6_0_OR_GREATER
+  public static void NotPow2(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = null)
+  {
+    if (!System.Numerics.BitOperations.IsPow2(value))
+    {
+      throw new ArgumentException(null, parameterName);
+    }
+  }
+#endif
 }
 #endif
