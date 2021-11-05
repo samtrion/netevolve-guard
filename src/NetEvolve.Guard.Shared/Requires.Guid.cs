@@ -3,9 +3,6 @@ namespace NetEvolve.Guard;
 using System;
 using System.Runtime.CompilerServices;
 
-/// <summary>
-/// Common runtime checks that throw Exceptions on failure.
-/// </summary>
 public static partial class Requires
 {
   public static void NotEmpty(Guid value, [CallerArgumentExpression("value")] string? parameterName = null)

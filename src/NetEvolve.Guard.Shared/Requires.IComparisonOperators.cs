@@ -5,9 +5,6 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
 
-/// <summary>
-/// Common runtime checks that throw Exceptions on failure.
-/// </summary>
 public static partial class Requires
 {
   [RequiresPreviewFeatures]
