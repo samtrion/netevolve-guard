@@ -2,6 +2,7 @@
 namespace NetEvolve.Guard;
 
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
 
@@ -10,40 +11,44 @@ using System.Runtime.Versioning;
 /// </summary>
 public static partial class Requires
 {
-    [RequiresPreviewFeatures]
-    public static void NotNaN<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  [RequiresPreviewFeatures]
+  [StackTraceHidden]
+  public static void NotNaN<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  {
+    if (T.IsNaN(value))
     {
-        if (T.IsNaN(value))
-        {
-            throw new ArgumentException(null, parameterName);
-        }
+      throw new ArgumentException(null, parameterName);
     }
+  }
 
-    [RequiresPreviewFeatures]
-    public static void NotInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  [RequiresPreviewFeatures]
+  [StackTraceHidden]
+  public static void NotInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  {
+    if (T.IsInfinity(value))
     {
-        if (T.IsInfinity(value))
-        {
-            throw new ArgumentException(null, parameterName);
-        }
+      throw new ArgumentException(null, parameterName);
     }
+  }
 
-    [RequiresPreviewFeatures]
-    public static void NotNegativeInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  [RequiresPreviewFeatures]
+  [StackTraceHidden]
+  public static void NotNegativeInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  {
+    if (T.IsNegativeInfinity(value))
     {
-        if (T.IsNegativeInfinity(value))
-        {
-            throw new ArgumentException(null, parameterName);
-        }
+      throw new ArgumentException(null, parameterName);
     }
+  }
 
-    [RequiresPreviewFeatures]
-    public static void NotPositiveInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  [RequiresPreviewFeatures]
+  [StackTraceHidden]
+  public static void NotPositiveInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  {
+    if (T.IsPositiveInfinity(value))
     {
-        if (T.IsPositiveInfinity(value))
-        {
-            throw new ArgumentException(null, parameterName);
-        }
+      throw new ArgumentException(null, parameterName);
     }
+  }
 }
 #endif

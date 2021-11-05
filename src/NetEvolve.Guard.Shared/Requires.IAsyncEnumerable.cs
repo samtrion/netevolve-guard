@@ -3,12 +3,14 @@ namespace NetEvolve.Guard;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 public static partial class Requires
 {
+  [StackTraceHidden]
   public static async ValueTask ItemsNotNullAsync<T>([NotNull] IAsyncEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = null) where T : class
   {
     if (await value.InternalAnyAsync(ValueIsNull))
@@ -19,6 +21,7 @@ public static partial class Requires
     static bool ValueIsNull([NotNullWhen(false)] T? value) => value is null;
   }
 
+  [StackTraceHidden]
   public static async ValueTask ItemsNotNullOrEmptyAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (await value.InternalAnyAsync(string.IsNullOrEmpty))
@@ -27,6 +30,7 @@ public static partial class Requires
     }
   }
 
+  [StackTraceHidden]
   public static async ValueTask ItemsNotNullOrWhiteSpaceAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
     if (await value.InternalAnyAsync(string.IsNullOrWhiteSpace))
@@ -35,6 +39,7 @@ public static partial class Requires
     }
   }
 
+  [StackTraceHidden]
   [return: NotNull]
   public static async ValueTask NotNullOrEmptyAsync<T>([NotNull] IAsyncEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = null)
   {
@@ -49,6 +54,7 @@ public static partial class Requires
     }
   }
 
+  [StackTraceHidden]
   private static async ValueTask<bool> InternalAnyAsync<T>(this IAsyncEnumerable<T> value)
   {
     await using (var enumerator = value.GetAsyncEnumerator())
@@ -57,6 +63,7 @@ public static partial class Requires
     }
   }
 
+  [StackTraceHidden]
   private static async ValueTask<bool> InternalAnyAsync<T>(this IAsyncEnumerable<T> value, Func<T, bool> predicate)
   {
     await foreach (var item in value.ConfigureAwait(false))

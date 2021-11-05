@@ -1,6 +1,7 @@
 namespace NetEvolve.Guard;
 
 using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
@@ -9,6 +10,7 @@ using System.Runtime.CompilerServices;
 /// </summary>
 public static partial class Requires
 {
+  [StackTraceHidden]
   public static void NotDefault<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
   {
     if (value.Equals(default(T)))
@@ -17,6 +19,7 @@ public static partial class Requires
     }
   }
 
+  [StackTraceHidden]
   public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
   {
     if (!value.HasValue)
@@ -27,6 +30,7 @@ public static partial class Requires
     return value.Value;
   }
 
+  [StackTraceHidden]
   public static T NotNullOrDefault<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
   {
     if (!value.HasValue)

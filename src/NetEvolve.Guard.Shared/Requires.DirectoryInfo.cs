@@ -1,4 +1,6 @@
 namespace NetEvolve.Guard;
+
+using System.Diagnostics;
 using System.IO;
 
 /// <summary>
@@ -6,6 +8,7 @@ using System.IO;
 /// </summary>
 public static partial class Requires
 {
+  [StackTraceHidden]
   public static void Exists(DirectoryInfo value)
   {
     if (!value.Exists)

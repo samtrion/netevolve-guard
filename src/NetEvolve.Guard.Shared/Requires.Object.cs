@@ -1,6 +1,7 @@
 namespace NetEvolve.Guard;
 
 using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
@@ -9,6 +10,7 @@ using System.Runtime.CompilerServices;
 /// </summary>
 public static partial class Requires
 {
+  [StackTraceHidden]
   public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : class
   {
     if (value is null)

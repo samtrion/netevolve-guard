@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Ensure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interops\StackTraceHiddenAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interops\EnumerableExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Requires.IAsyncEnumerable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Requires.IBinaryNumber.cs" />
