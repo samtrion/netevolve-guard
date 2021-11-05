@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 
 /// <summary>
-/// Common runtime checks that throw Exceptions on failure.
+/// Common runtime checks that throw <see cref="ArgumentException"/> on failure.
 /// </summary>
 public static class Ensure
 {

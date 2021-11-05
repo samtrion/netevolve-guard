@@ -4,9 +4,6 @@ using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-/// <summary>
-/// Common runtime checks that throw Exceptions on failure.
-/// </summary>
 public static partial class Requires
 {
   public static void IsReadable(Stream value, [CallerArgumentExpression("value")] string? parameterName = null)
