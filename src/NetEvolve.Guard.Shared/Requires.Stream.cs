@@ -2,13 +2,14 @@ namespace NetEvolve.Guard;
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.CompilerServices;
 
 public static partial class Requires
 {
   [StackTraceHidden]
-  public static void IsReadable(Stream value, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void IsReadable([NotNull] Stream value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (!value.CanRead)
     {
@@ -17,7 +18,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void IsSeekable(Stream value, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void IsSeekable([NotNull] Stream value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (!value.CanSeek)
     {
@@ -26,7 +27,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void IsWritable(Stream value, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void IsWritable([NotNull] Stream value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (!value.CanWrite)
     {
@@ -35,7 +36,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void NotEmpty(Stream value, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void NotEmpty([NotNull] Stream value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (0u == (uint)value.Length)
     {
