@@ -18,7 +18,6 @@ jobs:
   build:
     name: Run
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore')"
 
     steps:
     - name: Checkout
@@ -67,9 +66,9 @@ jobs:
         flags: unittests
 
     - name: Pack NuGet Packages
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && !startsWith(github.event.head_commit.message, 'chore') }}
       run: dotnet pack --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-build -o packages --include-symbols -p:SymbolPackageFormat=snupkg
 
     - name: Publish NuGet Package
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && !startsWith(github.event.head_commit.message, 'chore') }}
       run: dotnet nuget push "packages/*.nupkg" -s https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{ secrets.NUGET_TOKEN }}
