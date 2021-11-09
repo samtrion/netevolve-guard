@@ -17,11 +17,11 @@ public class RequiresIAsyncEnumerableTests
   {
     if (throwException)
     {
-      _ = await Assert.ThrowsAsync<ArgumentException>(nameof(values), async () => await Requires.ItemsNotNullAsync(values));
+      _ = await Assert.ThrowsAsync<ArgumentException>(nameof(values), async () => await Requires.ItemsNotNullAsync(values).ConfigureAwait(false)).ConfigureAwait(false);
     }
     else
     {
-      await Requires.ItemsNotNullAsync(values);
+      await Requires.ItemsNotNullAsync(values).ConfigureAwait(false);
     }
   }
 
@@ -31,11 +31,11 @@ public class RequiresIAsyncEnumerableTests
   {
     if (throwException)
     {
-      _ = await Assert.ThrowsAsync<ArgumentException>(nameof(values), async () => await Requires.ItemsNotNullOrEmptyAsync(values));
+      _ = await Assert.ThrowsAsync<ArgumentException>(nameof(values), async () => await Requires.ItemsNotNullOrEmptyAsync(values).ConfigureAwait(false)).ConfigureAwait(false);
     }
     else
     {
-      await Requires.ItemsNotNullOrEmptyAsync(values);
+      await Requires.ItemsNotNullOrEmptyAsync(values).ConfigureAwait(false);
     }
   }
 
@@ -45,11 +45,11 @@ public class RequiresIAsyncEnumerableTests
   {
     if (throwException)
     {
-      _ = await Assert.ThrowsAsync<ArgumentException>(nameof(values), async () => await Requires.ItemsNotNullOrWhiteSpaceAsync(values));
+      _ = await Assert.ThrowsAsync<ArgumentException>(nameof(values), async () => await Requires.ItemsNotNullOrWhiteSpaceAsync(values).ConfigureAwait(false)).ConfigureAwait(false);
     }
     else
     {
-      await Requires.ItemsNotNullOrWhiteSpaceAsync(values);
+      await Requires.ItemsNotNullOrWhiteSpaceAsync(values).ConfigureAwait(false);
     }
   }
 
@@ -58,7 +58,7 @@ public class RequiresIAsyncEnumerableTests
   {
     IAsyncEnumerable<string>? values = null;
 
-    _ = await Assert.ThrowsAsync<ArgumentNullException>(nameof(values), async () => await Requires.NotNullOrEmptyAsync(values));
+    _ = await Assert.ThrowsAsync<ArgumentNullException>(nameof(values), async () => await Requires.NotNullOrEmptyAsync(values).ConfigureAwait(false)).ConfigureAwait(false);
   }
 
   [Theory]
@@ -67,11 +67,11 @@ public class RequiresIAsyncEnumerableTests
   {
     if (throwException)
     {
-      _ = await Assert.ThrowsAsync<ArgumentException>(nameof(values), async () => await Requires.NotNullOrEmptyAsync(values));
+      _ = await Assert.ThrowsAsync<ArgumentException>(nameof(values), async () => await Requires.NotNullOrEmptyAsync(values).ConfigureAwait(false)).ConfigureAwait(false);
     }
     else
     {
-      await Requires.NotNullOrEmptyAsync(values);
+      await Requires.NotNullOrEmptyAsync(values).ConfigureAwait(false);
     }
   }
 

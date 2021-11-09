@@ -67,8 +67,10 @@ public class RequiresStreamTests
 
   public static TheoryData GetStreamData => new TheoryData<bool, Stream>
   {
+#pragma warning disable CA2000 // Dispose objects before losing scope
     { true, new TestStream() },
     { false, new MemoryStream(new byte[] { 1, 2, 3 }) }
+#pragma warning restore CA2000 // Dispose objects before losing scope
   };
 
   private sealed class TestStream : Stream
