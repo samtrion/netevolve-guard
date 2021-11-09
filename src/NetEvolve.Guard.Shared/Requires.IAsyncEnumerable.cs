@@ -14,7 +14,7 @@ public static partial class Requires
   [StackTraceHidden]
   public static async ValueTask ItemsNotNullAsync<T>([NotNull] IAsyncEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = default, CancellationToken cancellationToken = default) where T : class
   {
-    if (await value.InternalAnyAsync(ValueIsNull, cancellationToken))
+    if (await value.InternalAnyAsync(ValueIsNull, cancellationToken).ConfigureAwait(false))
     {
       throw new ArgumentException(null, parameterName);
     }
@@ -25,7 +25,7 @@ public static partial class Requires
   [StackTraceHidden]
   public static async ValueTask ItemsNotNullOrEmptyAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default, CancellationToken cancellationToken = default)
   {
-    if (await value.InternalAnyAsync(string.IsNullOrEmpty, cancellationToken))
+    if (await value.InternalAnyAsync(string.IsNullOrEmpty, cancellationToken).ConfigureAwait(false))
     {
       throw new ArgumentException(null, parameterName);
     }
@@ -34,7 +34,7 @@ public static partial class Requires
   [StackTraceHidden]
   public static async ValueTask ItemsNotNullOrWhiteSpaceAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default, CancellationToken cancellationToken = default)
   {
-    if (await value.InternalAnyAsync(string.IsNullOrWhiteSpace, cancellationToken))
+    if (await value.InternalAnyAsync(string.IsNullOrWhiteSpace, cancellationToken).ConfigureAwait(false))
     {
       throw new ArgumentException(null, parameterName);
     }
@@ -56,6 +56,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
+  [SuppressMessage("Reliability", "CA2007:Consider calling ConfigureAwait on the awaited task", Justification = "False positive")]
   private static async ValueTask<bool> InternalAnyAsync<T>(this IAsyncEnumerable<T> value)
   {
     await using (var enumerator = value.GetAsyncEnumerator())
