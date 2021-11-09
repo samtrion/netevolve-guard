@@ -9,7 +9,7 @@ public static partial class Requires
 {
   [StackTraceHidden]
   [return: NotNull]
-  public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : class
+  public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = default) where T : class
   {
     if (value is null)
     {

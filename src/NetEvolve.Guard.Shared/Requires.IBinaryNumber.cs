@@ -10,7 +10,7 @@ public static partial class Requires
 {
     [RequiresPreviewFeatures]
     [StackTraceHidden]
-    public static void NotPow2<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IBinaryNumber<T>
+    public static void NotPow2<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IBinaryNumber<T>
     {
         if (!T.IsPow2(value))
         {
