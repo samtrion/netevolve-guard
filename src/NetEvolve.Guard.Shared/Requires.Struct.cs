@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 public static partial class Requires
 {
   [StackTraceHidden]
-  public static void NotDefault<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
+  public static void NotDefault<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : struct
   {
     if (value.Equals(default(T)))
     {
@@ -18,7 +18,7 @@ public static partial class Requires
 
   [StackTraceHidden]
   [return: NotNull]
-  public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
+  public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = default) where T : struct
   {
     if (!value.HasValue)
     {
@@ -30,7 +30,7 @@ public static partial class Requires
 
   [StackTraceHidden]
   [return: NotNull]
-  public static T NotNullOrDefault<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null) where T : struct
+  public static T NotNullOrDefault<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = default) where T : struct
   {
     if (!value.HasValue)
     {

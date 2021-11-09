@@ -13,7 +13,7 @@ public static class Ensure
 {
   [StackTraceHidden]
   [return: NotNull]
-  public static TTarget Cast<T, TTarget>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static TTarget Cast<T, TTarget>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value is null)
     {
@@ -29,7 +29,7 @@ public static class Ensure
   }
 
   [StackTraceHidden]
-  public static void That<T>(T value, [NotNull] Expression<Predicate<T>> expression, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void That<T>(T value, [NotNull] Expression<Predicate<T>> expression, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (expression is null)
     {

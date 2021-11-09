@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 public static partial class Requires
 {
   [StackTraceHidden]
-  public static async ValueTask ItemsNotNullAsync<T>([NotNull] IAsyncEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = null, CancellationToken cancellationToken = default) where T : class
+  public static async ValueTask ItemsNotNullAsync<T>([NotNull] IAsyncEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = default, CancellationToken cancellationToken = default) where T : class
   {
     if (await value.InternalAnyAsync(ValueIsNull, cancellationToken))
     {
@@ -23,7 +23,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static async ValueTask ItemsNotNullOrEmptyAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null, CancellationToken cancellationToken = default)
+  public static async ValueTask ItemsNotNullOrEmptyAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default, CancellationToken cancellationToken = default)
   {
     if (await value.InternalAnyAsync(string.IsNullOrEmpty, cancellationToken))
     {
@@ -32,7 +32,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static async ValueTask ItemsNotNullOrWhiteSpaceAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null, CancellationToken cancellationToken = default)
+  public static async ValueTask ItemsNotNullOrWhiteSpaceAsync([NotNull] IAsyncEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default, CancellationToken cancellationToken = default)
   {
     if (await value.InternalAnyAsync(string.IsNullOrWhiteSpace, cancellationToken))
     {
@@ -42,7 +42,7 @@ public static partial class Requires
 
   [StackTraceHidden]
   [return: NotNull]
-  public static async ValueTask NotNullOrEmptyAsync<T>([NotNull] IAsyncEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static async ValueTask NotNullOrEmptyAsync<T>([NotNull] IAsyncEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value is null)
     {

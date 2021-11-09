@@ -10,7 +10,7 @@ public static partial class Requires
 {
   [RequiresPreviewFeatures]
   [StackTraceHidden]
-  public static void NotNaN<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  public static void NotNaN<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IFloatingPoint<T>
   {
     if (T.IsNaN(value))
     {
@@ -20,7 +20,7 @@ public static partial class Requires
 
   [RequiresPreviewFeatures]
   [StackTraceHidden]
-  public static void NotInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  public static void NotInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IFloatingPoint<T>
   {
     if (T.IsInfinity(value))
     {
@@ -30,7 +30,7 @@ public static partial class Requires
 
   [RequiresPreviewFeatures]
   [StackTraceHidden]
-  public static void NotNegativeInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  public static void NotNegativeInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IFloatingPoint<T>
   {
     if (T.IsNegativeInfinity(value))
     {
@@ -40,7 +40,7 @@ public static partial class Requires
 
   [RequiresPreviewFeatures]
   [StackTraceHidden]
-  public static void NotPositiveInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = null) where T : IFloatingPoint<T>
+  public static void NotPositiveInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IFloatingPoint<T>
   {
     if (T.IsPositiveInfinity(value))
     {

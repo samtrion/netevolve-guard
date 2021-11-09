@@ -9,7 +9,7 @@ using CompareValue = System.Double;
 public static partial class Requires
 {
   [StackTraceHidden]
-  public static void InBetween(CompareValue value, CompareValue minValue, CompareValue maxValue, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void InBetween(CompareValue value, CompareValue minValue, CompareValue maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (minValue <= value != value <= maxValue)
     {
@@ -18,7 +18,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void GreaterThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void GreaterThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value <= compareValue)
     {
@@ -27,7 +27,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void GreaterThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void GreaterThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value < compareValue)
     {
@@ -36,7 +36,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void LessThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void LessThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value >= compareValue)
     {
@@ -45,7 +45,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void LessThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void LessThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value > compareValue)
     {
@@ -54,7 +54,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void NotNaN(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void NotNaN(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (CompareValue.IsNaN(value))
     {
@@ -63,7 +63,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void NotInfinity(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void NotInfinity(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (CompareValue.IsInfinity(value))
     {
@@ -72,7 +72,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void NotNegativeInfinity(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void NotNegativeInfinity(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (CompareValue.IsNegativeInfinity(value))
     {
@@ -81,7 +81,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void NotPositiveInfinity(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void NotPositiveInfinity(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (CompareValue.IsPositiveInfinity(value))
     {

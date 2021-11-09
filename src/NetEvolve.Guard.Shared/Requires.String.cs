@@ -9,7 +9,7 @@ public static partial class Requires
 {
   [StackTraceHidden]
   [return: NotNull]
-  public static string NotNullOrEmpty([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static string NotNullOrEmpty([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value is null)
     {
@@ -26,7 +26,7 @@ public static partial class Requires
 
   [StackTraceHidden]
   [return: NotNull]
-  public static string NotNullOrWhiteSpace([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static string NotNullOrWhiteSpace([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value is null)
     {

@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 public static partial class Requires
 {
   [StackTraceHidden]
-  public static void ItemsNotNull<T>([NotNull] IEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = null) where T : class
+  public static void ItemsNotNull<T>([NotNull] IEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = default) where T : class
   {
     if (value.Any(ValueIsNull))
     {
@@ -21,7 +21,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void ItemsNotNullOrEmpty([NotNull] IEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void ItemsNotNullOrEmpty([NotNull] IEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value.Any(string.IsNullOrEmpty))
     {
@@ -30,7 +30,7 @@ public static partial class Requires
   }
 
   [StackTraceHidden]
-  public static void ItemsNotNullOrWhiteSpace([NotNull] IEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static void ItemsNotNullOrWhiteSpace([NotNull] IEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value.Any(string.IsNullOrWhiteSpace))
     {
@@ -40,7 +40,7 @@ public static partial class Requires
 
   [StackTraceHidden]
   [return: NotNull]
-  public static IEnumerable<T> NotNullOrEmpty<T>([NotNull] IEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = null)
+  public static IEnumerable<T> NotNullOrEmpty<T>([NotNull] IEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value is null)
     {
