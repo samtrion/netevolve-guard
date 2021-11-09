@@ -31,6 +31,10 @@
     <Copyright Condition="$(CopyrightYear) == $(CopyrightYearStart)">Copyright @ $(Authors) $(CopyrightYearStart)</Copyright>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.0.64">
       <PrivateAssets>all</PrivateAssets>
