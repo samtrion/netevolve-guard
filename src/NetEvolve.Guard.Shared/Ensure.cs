@@ -29,17 +29,21 @@ public static class Ensure
   }
 
   [StackTraceHidden]
-  public static void That<T>(T value, [NotNull] Expression<Predicate<T>> expression, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void That<T>(
+    T value,
+    [NotNull] Expression<Predicate<T>> conditionExpression,
+    [CallerArgumentExpression("value")] string? parameterName = default,
+    [CallerArgumentExpression("conditionExpression")] string? conditionString = default)
   {
-    if (expression is null)
+    if (conditionExpression is null)
     {
-      throw new ArgumentNullException(nameof(expression));
+      throw new ArgumentNullException(nameof(conditionExpression));
     }
 
-    var compiled = expression.Compile();
+    var compiled = conditionExpression.Compile();
     if (!compiled.Invoke(value))
     {
-      throw new ArgumentException(null, parameterName);
+      throw new ArgumentException(string.IsNullOrWhiteSpace(conditionString) ? "Condition failed" : $"Condition failed: '{conditionString}'", parameterName);
     }
   }
 }
