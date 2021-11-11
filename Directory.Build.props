@@ -18,10 +18,10 @@
     <PackageId>$(MSBuildProjectName)</PackageId>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageProjectUrl>https://github.com/samtrion/netevolve-guard</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/netevolve/guard</PackageProjectUrl>
     <PackageTags>argument;inputvalidation;parameter;guard;requires;validation;contract;assert;assertion;exception</PackageTags>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/samtrion/netevolve-guard</RepositoryUrl>
+    <RepositoryUrl>https://github.com/netevolve/guard</RepositoryUrl>
     <Authors>Martin Stühmer</Authors>
     <Product>NetEvolve Guard</Product>
 

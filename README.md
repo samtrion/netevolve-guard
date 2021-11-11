@@ -10,8 +10,8 @@ This package [`NetEvolve.Guard.Experimental`][2] is based on the new .NET 6 Prev
 
 ## Pipeline & Coverage Status
 
-[![Build and Release](https://github.com/samtrion/netevolve-guard/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/samtrion/netevolve-guard/actions/workflows/dotnet.yml)
-[![codecov](https://codecov.io/gh/samtrion/netevolve-guard/branch/main/graph/badge.svg?token=PNI4F6GXL8)](https://codecov.io/gh/samtrion/netevolve-guard)
+[![Build and Release](https://github.com/netevolve/guard/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/netevolve/guard/actions/workflows/dotnet.yml)
+[![codecov](https://codecov.io/gh/netevolve/guard/branch/main/graph/badge.svg?token=PNI4F6GXL8)](https://codecov.io/gh/netevolve/guard)
 
 [1]: https://www.nuget.org/packages/NetEvolve.Guard/ "NetEvolve.Guard NuGet package"
 [2]: https://www.nuget.org/packages/NetEvolve.Guard.Experimental/ "NetEvolve.Guard.Experimental NuGet package"
