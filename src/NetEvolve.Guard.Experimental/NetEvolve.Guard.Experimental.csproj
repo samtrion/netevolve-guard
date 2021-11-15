@@ -1,16 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>
     <EnablePreviewFeatures>true</EnablePreviewFeatures>
     <GenerateRequiresPreviewFeaturesAttribute>false</GenerateRequiresPreviewFeaturesAttribute>
-
-    <DefineConstants>USE_GENERIC_MATH_FEATURE;$(DefineConstants)</DefineConstants>
 
     <RootNamespace>NetEvolve.Guard</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <DefineConstants>USE_GENERIC_MATH_FEATURE;$(DefineConstants)</DefineConstants>    
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
     <PackageReference Include="System.Runtime.Experimental" Version="6.0.0" />
   </ItemGroup>
 
