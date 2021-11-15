@@ -53,8 +53,11 @@ jobs:
     - name: Build Solution
       run: dotnet build --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-restore
 
-    - name: Test Solution
-      run: dotnet test --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-build --no-restore --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"opencover,json\" -m:1
+    - name: Test Solution .NET 5
+      run: dotnet test --configuration Release /p:Version=$GITVERSION_FULLSEMVER -f net5.0 --no-build --no-restore --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json\" /p:CoverletOutputFormat=\"opencover,json\" -m:1
+
+    - name: Test Solution .NET 6
+      run: dotnet test --configuration Release /p:Version=$GITVERSION_FULLSEMVER -f net6.0 --no-build --no-restore --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net6.0.json\" /p:CoverletOutputFormat=\"opencover,json\" -m:1
 
     - name: Upload Coverage Reports to Codecov
       uses: codecov/codecov-action@v2
