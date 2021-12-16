@@ -31,7 +31,7 @@ public static class Ensure
   [StackTraceHidden]
   public static void That<T>(
     T value,
-    [NotNull] Expression<Predicate<T>> conditionExpression,
+    [NotNull] Func<T, bool> conditionExpression,
     [CallerArgumentExpression("value")] string? parameterName = default,
     [CallerArgumentExpression("conditionExpression")] string? conditionString = default)
   {
@@ -40,8 +40,7 @@ public static class Ensure
       throw new ArgumentNullException(nameof(conditionExpression));
     }
 
-    var compiled = conditionExpression.Compile();
-    if (!compiled.Invoke(value))
+    if (!conditionExpression.Invoke(value))
     {
       throw new ArgumentException(string.IsNullOrWhiteSpace(conditionString) ? "Condition failed" : $"Condition failed: '{conditionString}'", parameterName);
     }
