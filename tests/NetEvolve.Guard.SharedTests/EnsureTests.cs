@@ -47,6 +47,15 @@ public class EnsureTests
   }
 
   [Fact]
+  public void That_ValueInvalidAndConditionStringNull_Exception()
+  {
+    var value = new List<string>();
+    var ex = Assert.Throws<ArgumentException>(nameof(value), () => Ensure.That(value, x => x.Any(), conditionString: null));
+
+    Assert.Equal("Condition failed (Parameter 'value')", ex.Message);
+  }
+
+  [Fact]
   public void That_ValueValue_Exception()
   {
     var value = new List<string> { "Hi" };
