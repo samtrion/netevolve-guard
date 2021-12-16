@@ -20,6 +20,16 @@ public static partial class Requires
 
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  public static void NotBetween<T>(T value, T minValue, T maxValue, [CallerArgumentExpression("value")] string? parameterName = default) where T : IComparisonOperators<T, T>
+  {
+    if (minValue <= value == value <= maxValue)
+    {
+      throw new ArgumentOutOfRangeException(parameterName, value, null);
+    }
+  }
+
+  [RequiresPreviewFeatures]
+  [StackTraceHidden]
   public static void GreaterThan<T>(T value, T compareValue, [CallerArgumentExpression("value")] string? parameterName = default) where T : IComparisonOperators<T, T>
   {
     if (value <= compareValue)

@@ -16,7 +16,16 @@ public static partial class Requires
       throw new ArgumentOutOfRangeException(parameterName, value, null);
     }
   }
-  
+
+  [StackTraceHidden]
+  public static void NotBetween(CompareValue value, CompareValue minValue, CompareValue maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  {
+    if (minValue <= value == value <= maxValue)
+    {
+      throw new ArgumentOutOfRangeException(parameterName, value, null);
+    }
+  }
+
   [StackTraceHidden]
   public static void GreaterThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {

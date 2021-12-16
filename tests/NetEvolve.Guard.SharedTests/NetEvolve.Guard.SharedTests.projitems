@@ -9,21 +9,21 @@
     <Import_RootNamespace>NetEvolve.Guard.Tests</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresIAsyncEnumerableTests.cs" />
-    <Compile Include="..\NetEvolve.Guard.SharedTests\EnsureTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresIAsyncEnumerableTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnsureTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresCharTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDateOnlyTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDateTimeOffsetTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDateTimeTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDecimalTests.cs" />
-    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresObjectTests.cs" />
-    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresGuidTests.cs" />
-    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresStringTests.cs" />
-    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresStructTests.cs" />
-    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresUriTests.cs" />
-    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresStreamTests.cs" />
-    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresIEnumerableTests.cs" />
-    <Compile Include="..\NetEvolve.Guard.SharedTests\RequiresFileInfoTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresObjectTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresGuidTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresStringTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresStructTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresUriTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresStreamTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresIEnumerableTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresFileInfoTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDirectoryInfoTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDoubleTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresHalfTests.cs" />

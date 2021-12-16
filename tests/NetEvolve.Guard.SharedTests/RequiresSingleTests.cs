@@ -31,6 +31,20 @@ public sealed class RequiresSingleTests
   }
 
   [Theory]
+  [MemberData(nameof(GetNotBetweenData))]
+  public void NotBetween_Theory_Expected(bool throwException, CompareValue value, CompareValue min, CompareValue max)
+  {
+    if (throwException)
+    {
+      _ = Assert.Throws<ArgumentOutOfRangeException>(nameof(value), () => Requires.NotBetween(value, min, max));
+    }
+    else
+    {
+      Requires.NotBetween(value, min, max);
+    }
+  }
+
+  [Theory]
   [MemberData(nameof(GetGreaterThanData))]
   public void GreaterThan_Theory_Expected(bool throwException, CompareValue value, CompareValue compareValue)
   {
@@ -148,6 +162,14 @@ public sealed class RequiresSingleTests
       { true, MaxValue, BaseValue, MinValue },
       { false, BaseValue, MinValue, MaxValue },
       { false, BaseValue, MaxValue, MinValue }
+    };
+
+  public static TheoryData GetNotBetweenData => new TheoryData<bool, CompareValue, CompareValue, CompareValue>
+    {
+      { false, MinValue, BaseValue, MaxValue },
+      { false, MaxValue, BaseValue, MinValue },
+      { true, BaseValue, MinValue, MaxValue },
+      { true, BaseValue, MaxValue, MinValue }
     };
 
   public static TheoryData GetGreaterThanData => new TheoryData<bool, CompareValue, CompareValue>
