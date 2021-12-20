@@ -21,6 +21,7 @@ public static class Ensure
   /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
   /// <exception cref="ArgumentException">When <paramref name="value"/> couldn't be cast to <typeparamref name="TTarget"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   [return: NotNull]
   public static TTarget Cast<T, TTarget>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
@@ -48,6 +49,7 @@ public static class Ensure
   /// <exception cref="ArgumentNullException">When <paramref name="expression"/> is <see langword="null"/>.</exception>
   /// <exception cref="ArgumentException">When <paramref name="expression"/> returns <see langword="false"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void That<T>(
     T value,
     [NotNull] Func<T, bool> expression,

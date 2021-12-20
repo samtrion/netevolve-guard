@@ -16,6 +16,7 @@ public static partial class Requires
   /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
   /// <exception cref="ArgumentException">When <paramref name="value"/> is <see cref="string.Empty"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   [return: NotNull]
   public static string NotNullOrEmpty([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
@@ -41,6 +42,7 @@ public static partial class Requires
   /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
   /// <exception cref="ArgumentException">When <paramref name="value"/> is <see cref="string.Empty"/> or whitespace.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   [return: NotNull]
   public static string NotNullOrWhiteSpace([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
@@ -58,8 +60,8 @@ public static partial class Requires
   }
 
   [DebuggerStepThrough]
-  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   private static bool IsWhiteSpace(string value)
   {
     for (var i = 0; i < value.Length; i++)

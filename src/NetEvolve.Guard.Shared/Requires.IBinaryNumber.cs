@@ -17,6 +17,7 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is not a power of two.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void NotPow2<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IBinaryNumber<T>
   {
     if (!T.IsPow2(value))

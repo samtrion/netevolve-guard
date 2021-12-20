@@ -14,6 +14,7 @@ public static partial class Requires
   /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
   /// <exception cref="ArgumentException">When <paramref name="value"/> is <see cref="Guid.Empty"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void NotEmpty(Guid value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value == Guid.Empty)
@@ -31,6 +32,7 @@ public static partial class Requires
   /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
   /// <exception cref="ArgumentException">When <paramref name="value"/> is <see cref="Guid.Empty"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   [return: NotNull]
   public static Guid NotNullOrEmpty(Guid? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {

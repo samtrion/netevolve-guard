@@ -17,6 +17,7 @@ public static partial class Requires
   /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
   /// <exception cref="ArgumentException">When one or more elements are <see langword="null"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void ItemsNotNull<T>([NotNull] IEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = default) where T : class
   {
     if (value.Any(ValueIsNull))
@@ -35,6 +36,7 @@ public static partial class Requires
   /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
   /// <exception cref="ArgumentException">When one or more elements are <see langword="null"/> or <see cref="string.Empty"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void ItemsNotNullOrEmpty([NotNull] IEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value.Any(string.IsNullOrEmpty))
@@ -50,6 +52,7 @@ public static partial class Requires
   /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
   /// <exception cref="ArgumentException">When one or more elements are <see langword="null"/> or whitespace.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void ItemsNotNullOrWhiteSpace([NotNull] IEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value.Any(string.IsNullOrWhiteSpace))
@@ -68,6 +71,7 @@ public static partial class Requires
   /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
   /// <exception cref="ArgumentException">When <paramref name="value"/> has no elements.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   [return: NotNull]
   public static IEnumerable<T> NotNullOrEmpty<T>([NotNull] IEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = default)
   {

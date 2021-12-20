@@ -3,6 +3,7 @@ namespace NetEvolve.Guard;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 public static partial class Requires
 {
@@ -12,6 +13,7 @@ public static partial class Requires
   /// <param name="value">Value to be verified.</param>
   /// <exception cref="FileNotFoundException">When <paramref name="value"/> not exists.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void Exists([NotNull] FileInfo value)
   {
     if (!value.Exists)

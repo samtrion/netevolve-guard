@@ -16,6 +16,7 @@ public static partial class Requires
   /// <returns>A non-<see langword="null"/> <typeparamref name="T"/>.</returns>
   /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   [return: NotNull]
   public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = default) where T : class
   {

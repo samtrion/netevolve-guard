@@ -19,6 +19,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is not between <paramref name="minValue"/> and <paramref name="maxValue"/>.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void InBetween<T>(T value, T minValue, T maxValue, [CallerArgumentExpression("value")] string? parameterName = default) where T : IComparisonOperators<T, T>
   {
     if (minValue <= value != value <= maxValue)
@@ -38,6 +39,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is between <paramref name="minValue"/> and <paramref name="maxValue"/>.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void NotBetween<T>(T value, T minValue, T maxValue, [CallerArgumentExpression("value")] string? parameterName = default) where T : IComparisonOperators<T, T>
   {
     if (minValue <= value == value <= maxValue)
@@ -56,6 +58,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is less than or equal to <paramref name="compareValue"/>.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void GreaterThan<T>(T value, T compareValue, [CallerArgumentExpression("value")] string? parameterName = default) where T : IComparisonOperators<T, T>
   {
     if (value <= compareValue)
@@ -74,6 +77,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is less than <paramref name="compareValue"/>.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void GreaterThanOrEqual<T>(T value, T compareValue, [CallerArgumentExpression("value")] string? parameterName = default) where T : IComparisonOperators<T, T>
   {
     if (value < compareValue)
@@ -92,6 +96,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is greater than or equal to <paramref name="compareValue"/>.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void LessThan<T>(T value, T compareValue, [CallerArgumentExpression("value")] string? parameterName = default) where T : IComparisonOperators<T, T>
   {
     if (value >= compareValue)
@@ -110,6 +115,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is greater than <paramref name="compareValue"/>.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void LessThanOrEqual<T>(T value, T compareValue, [CallerArgumentExpression("value")] string? parameterName = default) where T : IComparisonOperators<T, T>
   {
     if (value > compareValue)

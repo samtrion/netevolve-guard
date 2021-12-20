@@ -14,6 +14,7 @@ public static partial class Requires
   /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
   /// <exception cref="ArgumentException">When <paramref name="value"/> is not an absolute <see cref="Uri"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void IsAbsolute([NotNull] Uri value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (!value.IsAbsoluteUri)
@@ -29,6 +30,7 @@ public static partial class Requires
   /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
   /// <exception cref="ArgumentException">When <paramref name="value"/> is not a relative <see cref="Uri"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void IsRelative([NotNull] Uri value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value.IsAbsoluteUri)

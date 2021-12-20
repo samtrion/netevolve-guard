@@ -17,6 +17,7 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is not a number, then a <see cref="ArgumentException"/> is raised.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void NotNaN<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IFloatingPoint<T>
   {
     if (T.IsNaN(value))
@@ -34,6 +35,7 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is infinity, then a <see cref="ArgumentException"/> is raised.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void NotInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IFloatingPoint<T>
   {
     if (T.IsInfinity(value))
@@ -51,6 +53,7 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is negative infinity, then a <see cref="ArgumentException"/> is raised.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void NotNegativeInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IFloatingPoint<T>
   {
     if (T.IsNegativeInfinity(value))
@@ -68,6 +71,7 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is positive infinity, then a <see cref="ArgumentException"/> is raised.</exception>
   [RequiresPreviewFeatures]
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void NotPositiveInfinity<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : IFloatingPoint<T>
   {
     if (T.IsPositiveInfinity(value))

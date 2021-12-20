@@ -15,6 +15,7 @@ public static partial class Requires
   /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
   /// <exception cref="ArgumentException">When <paramref name="value"/> is <see langword="default{T}"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static void NotDefault<T>(T value, [CallerArgumentExpression("value")] string? parameterName = default) where T : struct
   {
     if (value.Equals(default(T)))
@@ -32,6 +33,7 @@ public static partial class Requires
   /// <returns>A not-null <typeparamref name="T"/>.</returns>
   /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   [return: NotNull]
   public static T NotNull<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = default) where T : struct
   {
@@ -53,6 +55,7 @@ public static partial class Requires
   /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
   /// <exception cref="ArgumentException">When <paramref name="value"/> is <see langword="default{T}"/>.</exception>
   [StackTraceHidden]
+  [MethodImpl(MethodImplOptions.AggressiveInlining)]
   [return: NotNull]
   public static T NotNullOrDefault<T>([NotNull] T? value, [CallerArgumentExpression("value")] string? parameterName = default) where T : struct
   {
