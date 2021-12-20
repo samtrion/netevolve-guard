@@ -29,7 +29,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: |
-          5.x
+          3.1.x
+          5.0.x
           6.0.100
 
     - name: Install GitVersion
@@ -49,6 +50,9 @@ jobs:
     - name: Build Solution
       run: dotnet build --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-restore
 
+    - name: Test Solution .NET Core 3.1
+      run: dotnet test --configuration Release /p:Version=$GITVERSION_FULLSEMVER -f netcoreapp3.1 --no-build --no-restore --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.netcoreapp3.1.json\" /p:CoverletOutputFormat=\"opencover,json\" -m:1
+
     - name: Test Solution .NET 5
       run: dotnet test --configuration Release /p:Version=$GITVERSION_FULLSEMVER -f net5.0 --no-build --no-restore --verbosity minimal /p:CollectCoverage=true /p:CoverletOutput=\"$GITHUB_WORKSPACE/results/\" /p:MergeWith=\"$GITHUB_WORKSPACE/results/coverage.net5.0.json\" /p:CoverletOutputFormat=\"opencover,json\" -m:1
 
@@ -60,7 +64,7 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         directory: $GITHUB_WORKSPACE
-        files: ./results/coverage.net5.0.json,./results/coverage.net6.0.json
+        files: ./results/coverage.netcoreapp3.1.json,./results/coverage.net5.0.json,./results/coverage.net6.0.json
         fail_ci_if_error: false
         flags: unittests
 
