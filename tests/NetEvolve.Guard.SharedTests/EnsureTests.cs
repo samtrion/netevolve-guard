@@ -34,7 +34,7 @@ public class EnsureTests
   public void That_ValueNull_Exception()
   {
     List<string>? value = null;
-    _ = Assert.Throws<ArgumentNullException>("conditionExpression", () => Ensure.That(value, null!));
+    _ = Assert.Throws<ArgumentNullException>("expression", () => Ensure.That(value, null!));
   }
 
   [Fact]
