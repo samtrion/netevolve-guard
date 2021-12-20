@@ -34,7 +34,7 @@ public class EnsureTests
   public void That_ValueNull_Exception()
   {
     List<string>? value = null;
-    _ = Assert.Throws<ArgumentNullException>("conditionExpression", () => Ensure.That(value, null!));
+    _ = Assert.Throws<ArgumentNullException>("expression", () => Ensure.That(value, null!));
   }
 
   [Fact]
@@ -44,6 +44,15 @@ public class EnsureTests
     var ex = Assert.Throws<ArgumentException>(nameof(value), () => Ensure.That(value, x => x.Any()));
 
     Assert.Equal("Condition failed: 'x => x.Any()' (Parameter 'value')", ex.Message);
+  }
+
+  [Fact]
+  public void That_ValueInvalidAndConditionStringNull_Exception()
+  {
+    var value = new List<string>();
+    var ex = Assert.Throws<ArgumentException>(nameof(value), () => Ensure.That(value, x => x.Any(), conditionString: null));
+
+    Assert.Equal("Condition failed (Parameter 'value')", ex.Message);
   }
 
   [Fact]
