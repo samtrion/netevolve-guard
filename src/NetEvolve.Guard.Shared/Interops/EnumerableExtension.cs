@@ -28,7 +28,6 @@ internal static class EnumerableExtension
   ///   The method performs a series of type tests, identifying common subtypes whose
   ///   count can be determined without enumerating; this includes <see cref="ICollection{T}"/>,
   ///   <see cref="ICollection"/> as well as internal types used in the LINQ implementation.
-  ///
   ///   The method is typically a constant-time operation, but ultimately this depends on the complexity
   ///   characteristics of the underlying collection implementation.
   /// </remarks>
@@ -39,9 +38,9 @@ internal static class EnumerableExtension
       throw new ArgumentNullException(nameof(source));
     }
 
-    if (source is ICollection<TSource> collectionoft)
+    if (source is ICollection<TSource> collectionOfT)
     {
-      count = collectionoft.Count;
+      count = collectionOfT.Count;
       return true;
     }
 

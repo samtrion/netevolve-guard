@@ -7,6 +7,14 @@ using System.Runtime.CompilerServices;
 
 public static partial class Requires
 {
+  /// <summary>
+  /// Determines if <paramref name="value"/> is not <see langword="null"/> or <see cref="string.Empty"/>.
+  /// </summary>
+  /// <param name="value">Value to be verified.</param>
+  /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
+  /// <returns>A non-<see langword="null"/> <see cref="string"/>.</returns>
+  /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
+  /// <exception cref="ArgumentException">When <paramref name="value"/> is <see cref="string.Empty"/>.</exception>
   [StackTraceHidden]
   [return: NotNull]
   public static string NotNullOrEmpty([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = default)
@@ -24,6 +32,14 @@ public static partial class Requires
     return value;
   }
 
+  /// <summary>
+  /// Determines if <paramref name="value"/> is not <see langword="null"/> or whitespace.
+  /// </summary>
+  /// <param name="value">Value to be verified.</param>
+  /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
+  /// <returns>A non-<see langword="null"/> <see cref="string"/>.</returns>
+  /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
+  /// <exception cref="ArgumentException">When <paramref name="value"/> is <see cref="string.Empty"/> or whitespace.</exception>
   [StackTraceHidden]
   [return: NotNull]
   public static string NotNullOrWhiteSpace([NotNull] string? value, [CallerArgumentExpression("value")] string? parameterName = default)

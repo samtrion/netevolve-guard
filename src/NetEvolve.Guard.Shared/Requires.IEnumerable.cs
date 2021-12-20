@@ -9,6 +9,13 @@ using System.Runtime.CompilerServices;
 
 public static partial class Requires
 {
+  /// <summary>
+  /// Checks if the enumeration items are not-<see langword="null"/>.
+  /// </summary>
+  /// <typeparam name="T">Item Type</typeparam>
+  /// <param name="value">Value to be verified.</param>
+  /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
+  /// <exception cref="ArgumentException">When one or more elements are <see langword="null"/>.</exception>
   [StackTraceHidden]
   public static void ItemsNotNull<T>([NotNull] IEnumerable<T?> value, [CallerArgumentExpression("value")] string? parameterName = default) where T : class
   {
@@ -17,9 +24,16 @@ public static partial class Requires
       throw new ArgumentException(null, parameterName);
     }
 
+    [StackTraceHidden]
     static bool ValueIsNull([NotNullWhen(false)] T? value) => value is null;
   }
 
+  /// <summary>
+  /// Checks if the enumeration items are not-<see langword="null"/> or <see cref="string.Empty"/>.
+  /// </summary>
+  /// <param name="value">Value to be verified.</param>
+  /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
+  /// <exception cref="ArgumentException">When one or more elements are <see langword="null"/> or <see cref="string.Empty"/>.</exception>
   [StackTraceHidden]
   public static void ItemsNotNullOrEmpty([NotNull] IEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
@@ -29,6 +43,12 @@ public static partial class Requires
     }
   }
 
+  /// <summary>
+  /// Checks if the enumeration items are not-<see langword="null"/> or whitespace.
+  /// </summary>
+  /// <param name="value">Value to be verified.</param>
+  /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
+  /// <exception cref="ArgumentException">When one or more elements are <see langword="null"/> or whitespace.</exception>
   [StackTraceHidden]
   public static void ItemsNotNullOrWhiteSpace([NotNull] IEnumerable<string?> value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
@@ -38,6 +58,15 @@ public static partial class Requires
     }
   }
 
+  /// <summary>
+  /// Checks if the enumeration is non-<see langword="null"/> and contains elements.
+  /// </summary>
+  /// <typeparam name="T">Enumeration type.</typeparam>
+  /// <param name="value">Value to be verified.</param>
+  /// <param name="parameterName">Optional parameter, this is filled in with the <see cref="CallerArgumentExpressionAttribute"/> mechanism and doesn't need to be set manually.</param>
+  /// <returns>A non-nullable enumeration of <typeparamref name="T"/>.</returns>
+  /// <exception cref="ArgumentNullException">When <paramref name="value"/> is <see langword="null"/>.</exception>
+  /// <exception cref="ArgumentException">When <paramref name="value"/> has no elements.</exception>
   [StackTraceHidden]
   [return: NotNull]
   public static IEnumerable<T> NotNullOrEmpty<T>([NotNull] IEnumerable<T>? value, [CallerArgumentExpression("value")] string? parameterName = default)
