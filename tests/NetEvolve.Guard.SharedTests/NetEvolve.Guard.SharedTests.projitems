@@ -16,6 +16,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDateTimeOffsetTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDateTimeTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresDecimalTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresUIntPtrTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RequiresIntPtrTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresObjectTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresGuidTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RequiresStringTests.cs" />
