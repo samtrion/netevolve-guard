@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-    <PackageReference Include="System.Runtime.Experimental" Version="6.0.0" />
+    <PackageReference Include="System.Runtime.Experimental" Version="6.0.1" />
   </ItemGroup>
 
   <Import Project="..\NetEvolve.Guard.Shared\NetEvolve.Guard.Shared.projitems" Label="Shared" />
