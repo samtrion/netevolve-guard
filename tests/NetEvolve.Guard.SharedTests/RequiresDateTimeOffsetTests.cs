@@ -4,18 +4,17 @@ using NetEvolve.Guard;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
-using CompareValue = System.DateTimeOffset;
 
 [ExcludeFromCodeCoverage]
 public sealed class RequiresDateTimeOffsetTests
 {
-  private static CompareValue BaseValue { get; } = CompareValue.Now;
-  private static CompareValue MaxValue { get; } = CompareValue.MaxValue;
-  private static CompareValue MinValue { get; } = CompareValue.MinValue;
+  private static DateTimeOffset BaseValue { get; } = DateTimeOffset.Now;
+  private static DateTimeOffset MaxValue { get; } = DateTimeOffset.MaxValue;
+  private static DateTimeOffset MinValue { get; } = DateTimeOffset.MinValue;
 
   [Theory]
   [MemberData(nameof(GetInBetweenData))]
-  public void InBetween_Theory_Expected(bool throwException, CompareValue value, CompareValue min, CompareValue max)
+  public void InBetween_Theory_Expected(bool throwException, DateTimeOffset value, DateTimeOffset min, DateTimeOffset max)
   {
     if (throwException)
     {
@@ -29,7 +28,7 @@ public sealed class RequiresDateTimeOffsetTests
 
   [Theory]
   [MemberData(nameof(GetNotBetweenData))]
-  public void NotBetween_Theory_Expected(bool throwException, CompareValue value, CompareValue min, CompareValue max)
+  public void NotBetween_Theory_Expected(bool throwException, DateTimeOffset value, DateTimeOffset min, DateTimeOffset max)
   {
     if (throwException)
     {
@@ -43,7 +42,7 @@ public sealed class RequiresDateTimeOffsetTests
 
   [Theory]
   [MemberData(nameof(GetGreaterThanData))]
-  public void GreaterThan_Theory_Expected(bool throwException, CompareValue value, CompareValue compareValue)
+  public void GreaterThan_Theory_Expected(bool throwException, DateTimeOffset value, DateTimeOffset compareValue)
   {
     if (throwException)
     {
@@ -57,7 +56,7 @@ public sealed class RequiresDateTimeOffsetTests
 
   [Theory]
   [MemberData(nameof(GetGreaterThanOrEqualData))]
-  public void GreaterThanOrEqual_Theory_Expected(bool throwException, CompareValue value, CompareValue compareValue)
+  public void GreaterThanOrEqual_Theory_Expected(bool throwException, DateTimeOffset value, DateTimeOffset compareValue)
   {
     if (throwException)
     {
@@ -71,7 +70,7 @@ public sealed class RequiresDateTimeOffsetTests
 
   [Theory]
   [MemberData(nameof(GetLessThanData))]
-  public void LessThan_Theory_Expected(bool throwException, CompareValue value, CompareValue compareValue)
+  public void LessThan_Theory_Expected(bool throwException, DateTimeOffset value, DateTimeOffset compareValue)
   {
     if (throwException)
     {
@@ -85,7 +84,7 @@ public sealed class RequiresDateTimeOffsetTests
 
   [Theory]
   [MemberData(nameof(GetLessThanOrEqualData))]
-  public void LessThanOrEqual_Theory_Expected(bool throwException, CompareValue value, CompareValue compareValue)
+  public void LessThanOrEqual_Theory_Expected(bool throwException, DateTimeOffset value, DateTimeOffset compareValue)
   {
     if (throwException)
     {
@@ -97,15 +96,17 @@ public sealed class RequiresDateTimeOffsetTests
     }
   }
 
-  public static TheoryData GetInBetweenData => new TheoryData<bool, CompareValue, CompareValue, CompareValue>
+  public static TheoryData GetInBetweenData => new TheoryData<bool, DateTimeOffset, DateTimeOffset, DateTimeOffset>
     {
       { true, MinValue, BaseValue, MaxValue },
       { true, MaxValue, BaseValue, MinValue },
+      { false, MinValue, MinValue, MaxValue },
+      { false, MaxValue, MinValue, MaxValue },
       { false, BaseValue, MinValue, MaxValue },
       { false, BaseValue, MaxValue, MinValue }
     };
 
-  public static TheoryData GetNotBetweenData => new TheoryData<bool, CompareValue, CompareValue, CompareValue>
+  public static TheoryData GetNotBetweenData => new TheoryData<bool, DateTimeOffset, DateTimeOffset, DateTimeOffset>
     {
       { false, MinValue, BaseValue, MaxValue },
       { false, MaxValue, BaseValue, MinValue },
@@ -113,28 +114,28 @@ public sealed class RequiresDateTimeOffsetTests
       { true, BaseValue, MaxValue, MinValue }
     };
 
-  public static TheoryData GetGreaterThanData => new TheoryData<bool, CompareValue, CompareValue>
+  public static TheoryData GetGreaterThanData => new TheoryData<bool, DateTimeOffset, DateTimeOffset>
     {
       { true, BaseValue, MaxValue },
       { true, BaseValue, BaseValue },
       { false, BaseValue, MinValue }
     };
 
-  public static TheoryData GetGreaterThanOrEqualData => new TheoryData<bool, CompareValue, CompareValue>
+  public static TheoryData GetGreaterThanOrEqualData => new TheoryData<bool, DateTimeOffset, DateTimeOffset>
     {
       { true, BaseValue, MaxValue },
       { false, BaseValue, BaseValue },
       { false, BaseValue, MinValue }
     };
 
-  public static TheoryData GetLessThanData => new TheoryData<bool, CompareValue, CompareValue>
+  public static TheoryData GetLessThanData => new TheoryData<bool, DateTimeOffset, DateTimeOffset>
     {
       { true, BaseValue, MinValue },
       { true, BaseValue, BaseValue },
       { false, BaseValue, MaxValue }
     };
 
-  public static TheoryData GetLessThanOrEqualData => new TheoryData<bool, CompareValue, CompareValue>
+  public static TheoryData GetLessThanOrEqualData => new TheoryData<bool, DateTimeOffset, DateTimeOffset>
     {
       { true, BaseValue, MinValue },
       { false, BaseValue, BaseValue },

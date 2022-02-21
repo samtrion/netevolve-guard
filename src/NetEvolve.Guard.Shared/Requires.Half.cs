@@ -4,7 +4,6 @@ namespace NetEvolve.Guard;
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using CompareValue = System.Half;
 
 public static partial class Requires
 {
@@ -18,7 +17,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is not between <paramref name="minValue"/> and <paramref name="maxValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void InBetween(CompareValue value, CompareValue minValue, CompareValue maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void InBetween(Half value, Half minValue, Half maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (minValue <= value != value <= maxValue)
     {
@@ -36,7 +35,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is between <paramref name="minValue"/> and <paramref name="maxValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void NotBetween(CompareValue value, CompareValue minValue, CompareValue maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void NotBetween(Half value, Half minValue, Half maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (minValue <= value == value <= maxValue)
     {
@@ -53,7 +52,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is less than or equal to <paramref name="compareValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void GreaterThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void GreaterThan(Half value, Half compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value <= compareValue)
     {
@@ -70,7 +69,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is less than <paramref name="compareValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void GreaterThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void GreaterThanOrEqual(Half value, Half compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value < compareValue)
     {
@@ -87,7 +86,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is greater than or equal to <paramref name="compareValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void LessThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void LessThan(Half value, Half compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value >= compareValue)
     {
@@ -104,7 +103,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is greater than <paramref name="compareValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void LessThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void LessThanOrEqual(Half value, Half compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value > compareValue)
     {
@@ -120,9 +119,9 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is not a number.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void NotNaN(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void NotNaN(Half value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
-    if (CompareValue.IsNaN(value))
+    if (Half.IsNaN(value))
     {
       throw new ArgumentException(null, parameterName);
     }
@@ -136,9 +135,9 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is inifity.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void NotInfinity(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void NotInfinity(Half value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
-    if (CompareValue.IsInfinity(value))
+    if (Half.IsInfinity(value))
     {
       throw new ArgumentException(null, parameterName);
     }
@@ -152,9 +151,9 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is negative infinity.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void NotNegativeInfinity(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void NotNegativeInfinity(Half value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
-    if (CompareValue.IsNegativeInfinity(value))
+    if (Half.IsNegativeInfinity(value))
     {
       throw new ArgumentException(null, parameterName);
     }
@@ -168,9 +167,9 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is positive infinity.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void NotPositiveInfinity(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void NotPositiveInfinity(Half value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
-    if (CompareValue.IsPositiveInfinity(value))
+    if (Half.IsPositiveInfinity(value))
     {
       throw new ArgumentException(null, parameterName);
     }

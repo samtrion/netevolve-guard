@@ -4,7 +4,6 @@ namespace NetEvolve.Guard;
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using CompareValue = System.UInt16;
 
 public static partial class Requires
 {
@@ -18,7 +17,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is not between <paramref name="minValue"/> and <paramref name="maxValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void InBetween(CompareValue value, CompareValue minValue, CompareValue maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void InBetween(ushort value, ushort minValue, ushort maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (minValue <= value != value <= maxValue)
     {
@@ -36,7 +35,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is between <paramref name="minValue"/> and <paramref name="maxValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void NotBetween(CompareValue value, CompareValue minValue, CompareValue maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void NotBetween(ushort value, ushort minValue, ushort maxValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (minValue <= value == value <= maxValue)
     {
@@ -53,7 +52,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is less than or equal to <paramref name="compareValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void GreaterThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void GreaterThan(ushort value, ushort compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value <= compareValue)
     {
@@ -70,7 +69,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is less than <paramref name="compareValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void GreaterThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void GreaterThanOrEqual(ushort value, ushort compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value < compareValue)
     {
@@ -87,7 +86,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is greater than or equal to <paramref name="compareValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void LessThan(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void LessThan(ushort value, ushort compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value >= compareValue)
     {
@@ -104,7 +103,7 @@ public static partial class Requires
   /// <exception cref="ArgumentOutOfRangeException">When <paramref name="value"/> is greater than <paramref name="compareValue"/>.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void LessThanOrEqual(CompareValue value, CompareValue compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void LessThanOrEqual(ushort value, ushort compareValue, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (value > compareValue)
     {
@@ -121,7 +120,7 @@ public static partial class Requires
   /// <exception cref="ArgumentException">When <paramref name="value"/> is not a power of two.</exception>
   [StackTraceHidden]
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static void NotPow2(CompareValue value, [CallerArgumentExpression("value")] string? parameterName = default)
+  public static void NotPow2(ushort value, [CallerArgumentExpression("value")] string? parameterName = default)
   {
     if (!System.Numerics.BitOperations.IsPow2(value))
     {

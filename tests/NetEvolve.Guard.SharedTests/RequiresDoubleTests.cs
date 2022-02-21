@@ -4,21 +4,20 @@ using NetEvolve.Guard;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
-using CompareValue = System.Double;
 
 [ExcludeFromCodeCoverage]
 public sealed class RequiresDoubleTests
 {
-  private static CompareValue BaseValue { get; }
-  private static CompareValue MaxValue { get; } = CompareValue.MaxValue;
-  private static CompareValue MinValue { get; } = CompareValue.MinValue;
-  private static CompareValue NaN { get; } = CompareValue.NaN;
-  private static CompareValue NegativeInfinity { get; } = CompareValue.NegativeInfinity;
-  private static CompareValue PositiveInfinity { get; } = CompareValue.PositiveInfinity;
+  private static double BaseValue { get; }
+  private static double MaxValue { get; } = double.MaxValue;
+  private static double MinValue { get; } = double.MinValue;
+  private static double NaN { get; } = double.NaN;
+  private static double NegativeInfinity { get; } = double.NegativeInfinity;
+  private static double PositiveInfinity { get; } = double.PositiveInfinity;
 
   [Theory]
   [MemberData(nameof(GetInBetweenData))]
-  public void InBetween_Theory_Expected(bool throwException, CompareValue value, CompareValue min, CompareValue max)
+  public void InBetween_Theory_Expected(bool throwException, double value, double min, double max)
   {
     if (throwException)
     {
@@ -32,7 +31,7 @@ public sealed class RequiresDoubleTests
 
   [Theory]
   [MemberData(nameof(GetNotBetweenData))]
-  public void NotBetween_Theory_Expected(bool throwException, CompareValue value, CompareValue min, CompareValue max)
+  public void NotBetween_Theory_Expected(bool throwException, double value, double min, double max)
   {
     if (throwException)
     {
@@ -46,7 +45,7 @@ public sealed class RequiresDoubleTests
 
   [Theory]
   [MemberData(nameof(GetGreaterThanData))]
-  public void GreaterThan_Theory_Expected(bool throwException, CompareValue value, CompareValue compareValue)
+  public void GreaterThan_Theory_Expected(bool throwException, double value, double compareValue)
   {
     if (throwException)
     {
@@ -60,7 +59,7 @@ public sealed class RequiresDoubleTests
 
   [Theory]
   [MemberData(nameof(GetGreaterThanOrEqualData))]
-  public void GreaterThanOrEqual_Theory_Expected(bool throwException, CompareValue value, CompareValue compareValue)
+  public void GreaterThanOrEqual_Theory_Expected(bool throwException, double value, double compareValue)
   {
     if (throwException)
     {
@@ -74,7 +73,7 @@ public sealed class RequiresDoubleTests
 
   [Theory]
   [MemberData(nameof(GetLessThanData))]
-  public void LessThan_Theory_Expected(bool throwException, CompareValue value, CompareValue compareValue)
+  public void LessThan_Theory_Expected(bool throwException, double value, double compareValue)
   {
     if (throwException)
     {
@@ -88,7 +87,7 @@ public sealed class RequiresDoubleTests
 
   [Theory]
   [MemberData(nameof(GetLessThanOrEqualData))]
-  public void LessThanOrEqual_Theory_Expected(bool throwException, CompareValue value, CompareValue compareValue)
+  public void LessThanOrEqual_Theory_Expected(bool throwException, double value, double compareValue)
   {
     if (throwException)
     {
@@ -102,7 +101,7 @@ public sealed class RequiresDoubleTests
 
   [Theory]
   [MemberData(nameof(GetNotNaNData))]
-  public void NotNaN_Theory_Expected(bool throwException, CompareValue value)
+  public void NotNaN_Theory_Expected(bool throwException, double value)
   {
     if (throwException)
     {
@@ -116,7 +115,7 @@ public sealed class RequiresDoubleTests
 
   [Theory]
   [MemberData(nameof(GetNotInfinityData))]
-  public void NotInfinity_Theory_Expected(bool throwException, CompareValue value)
+  public void NotInfinity_Theory_Expected(bool throwException, double value)
   {
     if (throwException)
     {
@@ -130,7 +129,7 @@ public sealed class RequiresDoubleTests
 
   [Theory]
   [MemberData(nameof(GetNotNegativeInfinityData))]
-  public void NotNegativeInfinity_Theory_Expected(bool throwException, CompareValue value)
+  public void NotNegativeInfinity_Theory_Expected(bool throwException, double value)
   {
     if (throwException)
     {
@@ -144,7 +143,7 @@ public sealed class RequiresDoubleTests
 
   [Theory]
   [MemberData(nameof(GetNotPositiveInfinityData))]
-  public void NotPositiveInfinity_Theory_Expected(bool throwException, CompareValue value)
+  public void NotPositiveInfinity_Theory_Expected(bool throwException, double value)
   {
     if (throwException)
     {
@@ -156,15 +155,17 @@ public sealed class RequiresDoubleTests
     }
   }
 
-  public static TheoryData GetInBetweenData => new TheoryData<bool, CompareValue, CompareValue, CompareValue>
+  public static TheoryData GetInBetweenData => new TheoryData<bool, double, double, double>
     {
       { true, MinValue, BaseValue, MaxValue },
       { true, MaxValue, BaseValue, MinValue },
+      { false, MinValue, MinValue, MaxValue },
+      { false, MaxValue, MinValue, MaxValue },
       { false, BaseValue, MinValue, MaxValue },
       { false, BaseValue, MaxValue, MinValue }
     };
 
-  public static TheoryData GetNotBetweenData => new TheoryData<bool, CompareValue, CompareValue, CompareValue>
+  public static TheoryData GetNotBetweenData => new TheoryData<bool, double, double, double>
     {
       { false, MinValue, BaseValue, MaxValue },
       { false, MaxValue, BaseValue, MinValue },
@@ -172,35 +173,35 @@ public sealed class RequiresDoubleTests
       { true, BaseValue, MaxValue, MinValue }
     };
 
-  public static TheoryData GetGreaterThanData => new TheoryData<bool, CompareValue, CompareValue>
+  public static TheoryData GetGreaterThanData => new TheoryData<bool, double, double>
     {
       { true, BaseValue, MaxValue },
       { true, BaseValue, BaseValue },
       { false, BaseValue, MinValue }
     };
 
-  public static TheoryData GetGreaterThanOrEqualData => new TheoryData<bool, CompareValue, CompareValue>
+  public static TheoryData GetGreaterThanOrEqualData => new TheoryData<bool, double, double>
     {
       { true, BaseValue, MaxValue },
       { false, BaseValue, BaseValue },
       { false, BaseValue, MinValue }
     };
 
-  public static TheoryData GetLessThanData => new TheoryData<bool, CompareValue, CompareValue>
+  public static TheoryData GetLessThanData => new TheoryData<bool, double, double>
     {
       { true, BaseValue, MinValue },
       { true, BaseValue, BaseValue },
       { false, BaseValue, MaxValue }
     };
 
-  public static TheoryData GetLessThanOrEqualData => new TheoryData<bool, CompareValue, CompareValue>
+  public static TheoryData GetLessThanOrEqualData => new TheoryData<bool, double, double>
     {
       { true, BaseValue, MinValue },
       { false, BaseValue, BaseValue },
       { false, BaseValue, MaxValue }
     };
 
-  public static TheoryData GetNotNaNData => new TheoryData<bool, CompareValue>
+  public static TheoryData GetNotNaNData => new TheoryData<bool, double>
     {
       { true, NaN },
       { false, BaseValue },
@@ -208,7 +209,7 @@ public sealed class RequiresDoubleTests
       { false, MinValue }
     };
 
-  public static TheoryData GetNotInfinityData => new TheoryData<bool, CompareValue>
+  public static TheoryData GetNotInfinityData => new TheoryData<bool, double>
     {
       { true, PositiveInfinity },
       { true, NegativeInfinity },
@@ -216,7 +217,7 @@ public sealed class RequiresDoubleTests
       { false, MinValue }
     };
 
-  public static TheoryData GetNotNegativeInfinityData => new TheoryData<bool, CompareValue>
+  public static TheoryData GetNotNegativeInfinityData => new TheoryData<bool, double>
     {
       { false, PositiveInfinity },
       { true, NegativeInfinity },
@@ -224,7 +225,7 @@ public sealed class RequiresDoubleTests
       { false, MinValue }
     };
 
-  public static TheoryData GetNotPositiveInfinityData => new TheoryData<bool, CompareValue>
+  public static TheoryData GetNotPositiveInfinityData => new TheoryData<bool, double>
     {
       { true, PositiveInfinity },
       { false, NegativeInfinity },
