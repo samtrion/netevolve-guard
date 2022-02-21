@@ -49,8 +49,16 @@ jobs:
         useConfigFile: true
         configFilePath: GitVersion.yml
 
+    - name: Cache
+      uses: actions/cache@v2.1.7
+      id: cache
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+
     - name: Restore NuGet Dependencies
       run: dotnet restore
+      if: steps.cache.outputs.cache-hit != 'true'
 
     - name: Build Solution
       run: dotnet build --configuration Release /p:Version=$GITVERSION_FULLSEMVER --no-restore
